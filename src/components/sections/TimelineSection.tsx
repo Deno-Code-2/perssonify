@@ -1,3 +1,4 @@
+
 "use client"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
@@ -56,7 +57,7 @@ export default function TimelineSection() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = 80; // Header height (64px) + extra space (16px)
+      const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -131,7 +132,7 @@ export default function TimelineSection() {
                   asChild
                 >
                   <Link to="/growth-solutions/performance-marketing" className="flex items-start gap-3">
-                    <img src="/GrowthSolutionsIcons/PerformanceMarketing&PaidMedia" alt="Performance Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <img src="/Growth Solutions Icons/PerformanceMarketing&PaidMedia.png" alt="Performance Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
                     <div className="flex-1">
                       <h5 className="font-semibold">Performance Marketing & Paid Media</h5>
                       <p className="text-sm opacity-80">High-ROI ads that convert.</p>
@@ -145,7 +146,7 @@ export default function TimelineSection() {
                   asChild
                 >
                   <Link to="/growth-solutions/social-media-marketing" className="flex items-start gap-3">
-                    <img src="/GrowthSolutionsIcons/SocialMedia.png" alt="Social Media Marketing" className="w-8 h-8 mt-1 flex-shrink-0 dark:invert" />
+                    <img src="/Growth Solutions Icons/Social Media Marketing & Brand Engagement.png" alt="Social Media Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
                     <div className="flex-1">
                       <h5 className="font-semibold">Social Media Marketing & Brand Engagement</h5>
                       <p className="text-sm opacity-80">Build audience, spark action.</p>
@@ -158,8 +159,8 @@ export default function TimelineSection() {
                   className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
                   asChild
                 >
-                  <Link to="/growth-solutions/email" className="flex items-start gap-3">
-                    <img src="/GrowthSolutionsIcons/Email.png" alt="Email Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                  <Link to="/growth-solutions/email-marketing" className="flex items-start gap-3">
+                    <img src="/Growth Solutions Icons/Email Marketing & Marketing Automation.png" alt="Email Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
                     <div className="flex-1">
                       <h5 className="font-semibold">Email Marketing & Marketing Automation</h5>
                       <p className="text-sm opacity-80">Automate nurture, drive loyalty.</p>
@@ -173,7 +174,7 @@ export default function TimelineSection() {
                   asChild
                 >
                   <Link to="/growth-solutions/creative-solutions" className="flex items-start gap-3">
-                    <img src="/GrowthSolutionsIcons/Creative Solutions.png" alt="Creative Solutions" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <img src="/Growth Solutions Icons/Creative Solutions.png" alt="Creative Solutions" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
                     <div className="flex-1">
                       <h5 className="font-semibold">Creative Solutions</h5>
                       <p className="text-sm opacity-80">Visuals that get results.</p>
@@ -187,7 +188,7 @@ export default function TimelineSection() {
                   asChild
                 >
                   <Link to="/growth-solutions/conversion-optimization" className="flex items-start gap-3">
-                    <img src="/GrowthSolutionsIcons/ConversionRateOptimization.png" alt="Conversion Optimization" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <img src="/Growth Solutions Icons/Conversion Rate Optimization.png" alt="Conversion Optimization" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
                     <div className="flex-1">
                       <h5 className="font-semibold">Conversion Rate Optimization (CRO)</h5>
                       <p className="text-sm opacity-80">Test. Refine. Convert more.</p>
@@ -201,7 +202,7 @@ export default function TimelineSection() {
                   asChild
                 >
                   <Link to="/growth-solutions/seo-website-growth" className="flex items-start gap-3">
-                    <img src="/GrowthSolutionsIcons/SEO.png" alt="SEO & Website Growth" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <img src="/Growth Solutions Icons/Search Engine Optimization (SEO) & Website Growth.png" alt="SEO & Website Growth" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
                     <div className="flex-1">
                       <h5 className="font-semibold">Search Engine Optimization (SEO) & Website Growth</h5>
                       <p className="text-sm opacity-80">Rank higher. Grow faster.</p>
@@ -215,7 +216,7 @@ export default function TimelineSection() {
                   asChild
                 >
                   <Link to="/growth-solutions/website-solutions" className="flex items-start gap-3">
-                    <img src="/GrowthSolutionsIcons/Website.png" alt="Website Solutions" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <img src="/Growth Solutions Icons/Website Solutions.png" alt="Website Solutions" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
                     <div className="flex-1">
                       <h5 className="font-semibold">Website Solutions</h5>
                       <p className="text-sm opacity-80">Seamless, scalable, conversion-ready.</p>
@@ -227,55 +228,97 @@ export default function TimelineSection() {
               
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Specialized Growth Solutions</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <BarChart3 className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div className="flex-1">
-                    <h5 className="font-semibold text-foreground">Deep Dive Audit & Strategic Insights</h5>
-                    <p className="text-sm text-muted-foreground">Clarity through expert analysis.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Settings className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div className="flex-1">
-                    <h5 className="font-semibold text-foreground">Analytics and Event Tracking Setup</h5>
-                    <p className="text-sm text-muted-foreground">Track what matters, measure what works.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Funnel className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div className="flex-1">
-                    <h5 className="font-semibold text-foreground">Lead Generation & Funnel Strategy</h5>
-                    <p className="text-sm text-muted-foreground">Build funnels that convert.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Building className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div className="flex-1">
-                    <h5 className="font-semibold text-foreground">Brand Architecture & Strategy</h5>
-                    <p className="text-sm text-muted-foreground">Define, differentiate, scale.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <FileText className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div className="flex-1">
-                    <h5 className="font-semibold text-foreground">Content Strategy & Marketing</h5>
-                    <p className="text-sm text-muted-foreground">Create content that drives action.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Zap className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div className="flex-1">
-                    <h5 className="font-semibold text-foreground">Go-to-Market (GTM) Strategy</h5>
-                    <p className="text-sm text-muted-foreground">Launch with impact, scale with confidence.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Linkedin className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div className="flex-1">
-                    <h5 className="font-semibold text-foreground">Executive Personal Branding & LinkedIn Marketing</h5>
-                    <p className="text-sm text-muted-foreground">Elevate presence, grow influence.</p>
-                  </div>
-                </div>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/specialized-growth-solutions/audit-insights" className="flex items-start gap-3">
+                    <img src="/Specialized Growth Solutions Icons/Deep Dive Audit & Strategic Insights.png" alt="Deep Dive Audit" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <div className="flex-1">
+                      <h5 className="font-semibold">Deep Dive Audit & Strategic Insights</h5>
+                      <p className="text-sm opacity-80">Clarity through expert analysis.</p>
+                    </div>
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/specialized-growth-solutions/analytics-tracking" className="flex items-start gap-3">
+                    <img src="/Specialized Growth Solutions Icons/Analytics and Event Tracking Setup.png" alt="Analytics Tracking" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <div className="flex-1">
+                      <h5 className="font-semibold">Analytics and Event Tracking Setup</h5>
+                      <p className="text-sm opacity-80">Track what matters, measure what works.</p>
+                    </div>
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/specialized-growth-solutions/lead-generation" className="flex items-start gap-3">
+                    <img src="/Specialized Growth Solutions Icons/Lead Generation & Funnel Strategy.png" alt="Lead Generation" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <div className="flex-1">
+                      <h5 className="font-semibold">Lead Generation & Funnel Strategy</h5>
+                      <p className="text-sm opacity-80">Build funnels that convert.</p>
+                    </div>
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/specialized-growth-solutions/brand-architecture" className="flex items-start gap-3">
+                    <img src="/Specialized Growth Solutions Icons/Brand Architecture & Strategy.png" alt="Brand Architecture" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <div className="flex-1">
+                      <h5 className="font-semibold">Brand Architecture & Strategy</h5>
+                      <p className="text-sm opacity-80">Define, differentiate, scale.</p>
+                    </div>
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/specialized-growth-solutions/content-strategy" className="flex items-start gap-3">
+                    <img src="/Specialized Growth Solutions Icons/Content Strategy & Planning.png" alt="Content Strategy" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <div className="flex-1">
+                      <h5 className="font-semibold">Content Strategy & Marketing</h5>
+                      <p className="text-sm opacity-80">Create content that drives action.</p>
+                    </div>
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/specialized-growth-solutions/ai-content" className="flex items-start gap-3">
+                    <img src="/Specialized Growth Solutions Icons/AI-Accelerated Content Production Pipelines.png" alt="AI Content" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <div className="flex-1">
+                      <h5 className="font-semibold">AI-Accelerated Content Production Pipelines</h5>
+                      <p className="text-sm opacity-80">Scale content with AI precision.</p>
+                    </div>
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
+                  asChild
+                >
+                  <Link to="/specialized-growth-solutions/executive-branding" className="flex items-start gap-3">
+                    <img src="/Specialized Growth Solutions Icons/Executive Personal Branding & LinkedIn Marketing.png" alt="Executive Branding" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
+                    <div className="flex-1">
+                      <h5 className="font-semibold">Executive Personal Branding & LinkedIn Marketing</h5>
+                      <p className="text-sm opacity-80">Elevate presence, grow influence.</p>
+                    </div>
+                  </Link>
+                </Button>
               </div>
 
               <div className="text-center">
@@ -363,13 +406,6 @@ export default function TimelineSection() {
                   <div>
                     <h5 className="font-semibold text-foreground">Finance</h5>
                     <p className="text-sm text-muted-foreground">Automate reporting. Accelerate reconciliation.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <UserCheck className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Human Resources</h5>
-                    <p className="text-sm text-muted-foreground">Streamline onboarding. Simplify compliance workflows.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">

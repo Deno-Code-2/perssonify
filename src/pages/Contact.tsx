@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, ArrowRight, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -45,133 +46,135 @@ const Contact: React.FC = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email Us',
+      title: 'Email',
       description: 'stefan@perssonify.com',
-      action: 'Send us an email'
+      subtitle: 'Send us a message anytime'
     },
     {
       icon: Phone,
-      title: 'Call Us',
+      title: 'Phone',
       description: '+1 (609) 510-2061',
-      action: 'Schedule a call'
+      subtitle: 'Available during business hours'
     },
     {
       icon: MapPin,
-      title: 'Visit Us',
+      title: 'Location',
       description: 'United States',
-      action: 'Get directions'
+      subtitle: 'Serving clients nationwide'
     }
   ];
 
   return (
     <div className="bg-background min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-24 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <section className="relative pt-24 pb-16 bg-gradient-to-br from-primary/5 to-background">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold font-playfair text-foreground mb-6">
-              Let's Start Your{' '}
-              <span className="text-primary">Growth Journey</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Ready to Accelerate Your Business Growth?
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Ready to scale your business? We're here to help you identify the right solutions 
-              and create a roadmap for sustainable growth.
+              Let's discuss how we can help you scale efficiently, optimize operations, and achieve sustainable results.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-24">
+      <section className="py-16">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              className="lg:col-span-2"
             >
-              <Card className="custom-shadow">
-                <CardHeader>
-                  <CardTitle className="text-2xl font-playfair">Get Started Today</CardTitle>
-                  <CardDescription>
-                    Tell us about your business and challenges, and we'll show you how we can help.
+              <Card className="border-0 shadow-lg">
+                <CardHeader className="pb-6">
+                  <CardTitle className="text-2xl font-bold">Start the Conversation</CardTitle>
+                  <CardDescription className="text-base">
+                    Tell us about your business challenges and growth objectives.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Full Name *</Label>
+                        <Label htmlFor="name" className="text-sm font-medium">Name *</Label>
                         <Input
                           id="name"
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
-                          placeholder="John Smith"
+                          placeholder="Your full name"
                           required
+                          className="h-11"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email Address *</Label>
+                        <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
                         <Input
                           id="email"
                           name="email"
                           type="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          placeholder="john@company.com"
+                          placeholder="your@email.com"
                           required
+                          className="h-11"
                         />
                       </div>
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="company">Company Name</Label>
+                      <Label htmlFor="company" className="text-sm font-medium">Company</Label>
                       <Input
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleInputChange}
-                        placeholder="Your Company"
+                        placeholder="Your company name"
+                        className="h-11"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="solutionType">I'm interested in</Label>
+                      <Label htmlFor="solutionType" className="text-sm font-medium">Area of Interest</Label>
                       <Select onValueChange={(value) => setFormData({...formData, solutionType: value})}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select solution type" />
+                        <SelectTrigger className="h-11">
+                          <SelectValue placeholder="Select what interests you most" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="growth">Growth Solutions</SelectItem>
-                          <SelectItem value="strategic">Strategic Solutions</SelectItem>
-                          <SelectItem value="both">Both Growth & Strategic</SelectItem>
-                          <SelectItem value="consultation">Free Consultation</SelectItem>
+                          <SelectItem value="growth-marketing">Growth & Marketing Solutions</SelectItem>
+                          <SelectItem value="strategic-operations">Strategic & Operations Solutions</SelectItem>
+                          <SelectItem value="comprehensive">Comprehensive Business Optimization</SelectItem>
+                          <SelectItem value="consultation">Initial Strategy Consultation</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Tell us about your challenges *</Label>
+                      <Label htmlFor="message" className="text-sm font-medium">Project Details *</Label>
                       <Textarea
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        placeholder="Describe your current challenges and what you're looking to achieve..."
-                        rows={4}
+                        placeholder="Describe your current challenges, goals, and what success looks like for your business..."
+                        rows={5}
                         required
                         className="resize-none"
                       />
                     </div>
 
-                    <Button type="submit" className="w-full" size="lg">
+                    <Button type="submit" className="w-full h-12 text-base font-medium">
                       Send Message
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -188,16 +191,15 @@ const Contact: React.FC = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-3xl font-bold font-playfair text-foreground mb-4">
+                <h2 className="text-2xl font-bold text-foreground mb-4">
                   Get in Touch
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  We typically respond within 24 hours. For urgent matters, 
-                  please call us directly.
+                  We respond to all inquiries within 24 hours. Ready to discuss your project right away? Give us a call.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-4">
+              <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={index}
@@ -205,41 +207,37 @@ const Contact: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                   >
-                    <Card className="hover:shadow-lg transition-all duration-300 custom-shadow">
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <info.icon className="w-6 h-6 text-primary" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-foreground mb-1">{info.title}</h3>
-                            <p className="text-muted-foreground mb-2">{info.description}</p>
-                            <button className="text-sm text-primary hover:underline">
-                              {info.action}
-                            </button>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                    <div className="flex items-start space-x-4 p-4 rounded-lg border bg-card/50">
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <info.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-foreground mb-1">{info.title}</h3>
+                        <p className="text-foreground font-medium mb-1">{info.description}</p>
+                        <p className="text-sm text-muted-foreground">{info.subtitle}</p>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* What to Expect */}
-              <Card className="bg-muted/50 border-0">
-                <CardHeader>
-                  <CardTitle className="text-xl font-playfair">What to Expect</CardTitle>
+              {/* Process Overview */}
+              <Card className="bg-primary/5 border-primary/20">
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-lg">Our Process</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {[
-                    'Initial 30-minute discovery call within 24 hours',
-                    'Custom proposal based on your specific needs',
-                    'Clear timeline and pricing for your project',
-                    'Dedicated team assignment and project kickoff'
+                    'Discovery call within 24 hours',
+                    'Tailored proposal and strategy',
+                    'Clear timeline and deliverables',
+                    'Project kickoff and execution'
                   ].map((step, index) => (
                     <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{step}</span>
+                      <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <span className="text-xs font-medium text-primary">{index + 1}</span>
+                      </div>
+                      <span className="text-sm text-foreground">{step}</span>
                     </div>
                   ))}
                 </CardContent>

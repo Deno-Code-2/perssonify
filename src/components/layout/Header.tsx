@@ -1,7 +1,6 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,8 +13,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -31,6 +30,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       sections: [
         {
           title: 'Core Growth Solutions',
+          href: '/growth-solutions',
           items: [
             { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
             { name: 'Social Media Marketing & Brand Engagement', href: '/growth-solutions/social-media-marketing' },
@@ -43,6 +43,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
         },
         {
           title: 'Specialized Growth Solutions',
+          href: '/specialized-growth-solutions',
           items: [
             { name: 'Deep Dive Audit & Strategic Insights', href: '/specialized-growth-solutions/audit-insights' },
             { name: 'Analytics and Event Tracking Setup', href: '/specialized-growth-solutions/analytics-tracking' },
@@ -62,6 +63,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       sections: [
         {
           title: 'Core Strategic Solutions',
+          href: '/strategic-solutions',
           items: [
             { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
             { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems' },
@@ -71,6 +73,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
         },
         {
           title: 'Solutions By Function',
+          href: '/strategic-solutions/function',
           items: [
             { name: 'Finance', href: '/strategic-solutions/finance' },
             { name: 'Operations', href: '/strategic-solutions/operations' },
@@ -98,6 +101,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setActiveDropdown(null);
+        setActiveSubDropdown(null);
       }
     };
 
@@ -107,6 +111,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const handleDropdownToggle = (itemName: string) => {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
+    setActiveSubDropdown(null);
   };
 
   return (
@@ -151,35 +156,64 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full left-0 mt-2 w-80 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg overflow-hidden z-50"
-                          onMouseLeave={() => setActiveDropdown(null)}
+                          className="absolute top-full left-0 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg overflow-hidden z-50"
+                          onMouseLeave={() => {
+                            setActiveDropdown(null);
+                            setActiveSubDropdown(null);
+                          }}
                         >
-                          <div className="py-2">
-                            {item.sections?.map((section, sectionIndex) => (
-                              <div key={section.title} className={sectionIndex > 0 ? 'border-t border-border mt-2 pt-2' : ''}>
-                                <div className="px-4 py-2">
-                                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                                    {section.title}
-                                  </h4>
-                                </div>
-                                {section.items.map((dropdownItem, index) => (
-                                  <motion.div
-                                    key={dropdownItem.name}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: (sectionIndex * section.items.length + index) * 0.03 }}
+                          <div className="flex">
+                            {/* First level menu */}
+                            <div className="py-2 min-w-[200px] border-r border-border">
+                              {item.sections?.map((section, sectionIndex) => (
+                                <div 
+                                  key={section.title}
+                                  onMouseEnter={() => setActiveSubDropdown(section.title)}
+                                  className="relative"
+                                >
+                                  <Link
+                                    to={section.href || '#'}
+                                    className="flex items-center justify-between px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
                                   >
-                                    <Link
-                                      to={dropdownItem.href}
-                                      className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
-                                      onClick={() => setActiveDropdown(null)}
+                                    <span className="font-medium">{section.title}</span>
+                                    <ChevronRight className="w-3 h-3" />
+                                  </Link>
+                                </div>
+                              ))}
+                            </div>
+                            
+                            {/* Second level menu */}
+                            <AnimatePresence>
+                              {activeSubDropdown && (
+                                <motion.div
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  exit={{ opacity: 0, x: -10 }}
+                                  transition={{ duration: 0.15 }}
+                                  className="py-2 min-w-[300px]"
+                                >
+                                  {item.sections?.find(s => s.title === activeSubDropdown)?.items.map((subItem, index) => (
+                                    <motion.div
+                                      key={subItem.name}
+                                      initial={{ opacity: 0, x: -10 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: index * 0.03 }}
                                     >
-                                      {dropdownItem.name}
-                                    </Link>
-                                  </motion.div>
-                                ))}
-                              </div>
-                            ))}
+                                      <Link
+                                        to={subItem.href}
+                                        className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
+                                        onClick={() => {
+                                          setActiveDropdown(null);
+                                          setActiveSubDropdown(null);
+                                        }}
+                                      >
+                                        {subItem.name}
+                                      </Link>
+                                    </motion.div>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
                           </div>
                         </motion.div>
                       )}
@@ -234,6 +268,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           </div>
         </div>
 
+        {/* Mobile menu - keep existing code */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
