@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
@@ -26,7 +27,6 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const handleLogoClick = () => {
     navigate('/');
-    // Scroll to top with smooth behavior
     setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, 100);
@@ -57,19 +57,35 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
   ];
 
   const solutions = {
-    growth: [
-      { name: 'Digital Marketing', href: '/growth-solutions/digital-marketing' },
-      { name: 'SEO Services', href: '/growth-solutions/seo' },
-      { name: 'Social Media Management', href: '/growth-solutions/social-media' },
-      { name: 'Content Marketing', href: '/growth-solutions/content' },
-      { name: 'Email Marketing', href: '/growth-solutions/email' },
+    coreGrowth: [
+      { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
+      { name: 'Social Media Marketing & Brand Engagement', href: '/growth-solutions/social-media-marketing' },
+      { name: 'Email Marketing & Marketing Automation', href: '/growth-solutions/email-marketing' },
+      { name: 'Creative Solutions', href: '/growth-solutions/creative-solutions' },
+      { name: 'Conversion Rate Optimization (CRO)', href: '/growth-solutions/conversion-optimization' },
+      { name: 'SEO & Website Growth', href: '/growth-solutions/seo-website-growth' },
+      { name: 'Website Solutions', href: '/growth-solutions/website-solutions' },
     ],
-    strategic: [
-      { name: 'Business Consulting', href: '/strategic-solutions/consulting' },
-      { name: 'Market Research', href: '/strategic-solutions/research' },
-      { name: 'Brand Strategy', href: '/strategic-solutions/branding' },
-      { name: 'Analytics & Insights', href: '/strategic-solutions/analytics' },
-      { name: 'Process Optimization', href: '/strategic-solutions/optimization' },
+    specializedGrowth: [
+      { name: 'Deep Dive Audit & Strategic Insights', href: '/specialized-growth-solutions/audit-insights' },
+      { name: 'Analytics and Event Tracking Setup', href: '/specialized-growth-solutions/analytics-tracking' },
+      { name: 'Lead Generation & Funnel Strategy', href: '/specialized-growth-solutions/lead-generation' },
+      { name: 'Brand Architecture & Strategy', href: '/specialized-growth-solutions/brand-architecture' },
+      { name: 'Content Strategy & Planning', href: '/specialized-growth-solutions/content-strategy' },
+      { name: 'AI-Accelerated Content Production', href: '/specialized-growth-solutions/ai-content' },
+      { name: 'Executive Personal Branding', href: '/specialized-growth-solutions/executive-branding' },
+    ],
+    coreStrategic: [
+      { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
+      { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems' },
+      { name: 'Custom Solution Engineering', href: '/strategic-solutions/custom-engineering' },
+      { name: 'Enterprise Evolution & Strategic Transformation', href: '/strategic-solutions/enterprise-transformation' },
+    ],
+    strategicByFunction: [
+      { name: 'Finance', href: '/strategic-solutions/finance' },
+      { name: 'Operations', href: '/strategic-solutions/operations' },
+      { name: 'Compliance & Governance', href: '/strategic-solutions/compliance' },
+      { name: 'Cross-Functional Leadership', href: '/strategic-solutions/leadership' },
     ],
   };
 
@@ -85,7 +101,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-12">
           {/* Newsletter Section with Clickable Logo */}
-          <div className="relative md:col-span-3">
+          <div className="relative md:col-span-2">
             <button 
               onClick={handleLogoClick}
               className="mb-4 cursor-pointer hover:opacity-80 transition-opacity"
@@ -123,7 +139,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
               </div>
               <p className="text-xs text-muted-foreground">
                 By subscribing, you agree to our{" "}
-                <Link to="/privacy" className="underline hover:text-primary">
+                <Link to="/privacy-policy" className="underline hover:text-primary">
                   Privacy Policy
                 </Link>
               </p>
@@ -147,14 +163,27 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
             </nav>
           </div>
 
-          {/* Solutions - Side by Side */}
-          <div className="md:col-span-5">
+          {/* Solutions - Grid Layout */}
+          <div className="md:col-span-6">
             <h3 className="mb-4 text-lg font-semibold">Our Solutions</h3>
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <h4 className="mb-2 text-sm font-medium text-muted-foreground">Growth Solutions</h4>
-                <nav className="space-y-2 text-sm">
-                  {solutions.growth.map((item) => (
+                <h4 className="mb-2 text-sm font-medium text-muted-foreground">Core Growth Solutions</h4>
+                <nav className="space-y-1 text-xs">
+                  {solutions.coreGrowth.map((item) => (
+                    <Link 
+                      key={item.name}
+                      to={item.href} 
+                      className="block transition-colors hover:text-primary"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
+                
+                <h4 className="mb-2 mt-4 text-sm font-medium text-muted-foreground">Specialized Growth Solutions</h4>
+                <nav className="space-y-1 text-xs">
+                  {solutions.specializedGrowth.map((item) => (
                     <Link 
                       key={item.name}
                       to={item.href} 
@@ -165,10 +194,24 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
                   ))}
                 </nav>
               </div>
+              
               <div>
-                <h4 className="mb-2 text-sm font-medium text-muted-foreground">Strategic Solutions</h4>
-                <nav className="space-y-2 text-sm">
-                  {solutions.strategic.map((item) => (
+                <h4 className="mb-2 text-sm font-medium text-muted-foreground">Core Strategic Solutions</h4>
+                <nav className="space-y-1 text-xs">
+                  {solutions.coreStrategic.map((item) => (
+                    <Link 
+                      key={item.name}
+                      to={item.href} 
+                      className="block transition-colors hover:text-primary"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
+                
+                <h4 className="mb-2 mt-4 text-sm font-medium text-muted-foreground">Solutions By Function</h4>
+                <nav className="space-y-1 text-xs">
+                  {solutions.strategicByFunction.map((item) => (
                     <Link 
                       key={item.name}
                       to={item.href} 
@@ -242,10 +285,10 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
             © 2024 Perssonify. All rights reserved.
           </p>
           <nav className="flex gap-4 text-sm">
-            <Link to="/privacypolicy" className="transition-colors hover:text-primary">
+            <Link to="/privacy-policy" className="transition-colors hover:text-primary">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="transition-colors hover:text-primary">
+            <Link to="/terms-of-service" className="transition-colors hover:text-primary">
               Terms of Service
             </Link>
             <Link to="/cookies" className="transition-colors hover:text-primary">

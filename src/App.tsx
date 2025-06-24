@@ -41,6 +41,9 @@ import WebsiteSolutions from '@/pages/growth-solutions/WebsiteSolutions';
 // New Strategic Solutions Pages  
 import ProcessAutomation from '@/pages/strategic-solutions/ProcessAutomation';
 
+// Specialized Growth Solutions Pages
+import AnalyticsTracking from '@/pages/specialized-growth-solutions/AnalyticsTracking';
+
 function App() {
   return (
     <HelmetProvider>
@@ -71,6 +74,9 @@ function App() {
             <Route path="growth-solutions/conversion-optimization" element={<ConversionOptimization />} />
             <Route path="growth-solutions/seo-website-growth" element={<SEOWebsiteGrowth />} />
             <Route path="growth-solutions/website-solutions" element={<WebsiteSolutions />} />
+            
+            {/* Specialized Growth Solutions Sub-pages */}
+            <Route path="specialized-growth-solutions/analytics-tracking" element={<AnalyticsTracking />} />
             
             {/* Strategic Solutions Sub-pages */}
             <Route path="strategic-solutions/consulting" element={<BusinessConsulting />} />
