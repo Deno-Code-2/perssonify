@@ -1,54 +1,58 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
+import { LucideProps, Zap } from 'lucide-react';
 
 interface InteractiveHoverCardProps {
-  imageUrl?: string;
   heading: string;
   text: string;
+  icon?: React.ReactElement<LucideProps>;
+  imageUrl?: string;
   className?: string;
-  width?: number;
-  height?: number;
 }
 
 const InteractiveHoverCard: React.FC<InteractiveHoverCardProps> = ({
-  imageUrl,
   heading,
   text,
+  icon,
+  imageUrl,
   className,
-  width = 400,
-  height = 200,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-border bg-background transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer",
+        'group flex flex-row items-center gap-6 p-5 rounded-xl border border-foreground/10 bg-background transition-colors hover:border-primary/80 w-full max-w-lg h-44',
         className
       )}
-      style={{ width, height }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
-      
-      <div className="relative h-full flex flex-col items-center justify-center p-6 text-center">
-        {imageUrl && (
-          <div className="w-16 h-16 mb-4 flex items-center justify-center">
-            <img 
-              src={imageUrl} 
-              alt={heading}
-              className="w-full h-full object-contain"
-            />
-          </div>
+      {/* Icon or Image */}
+      <div className="flex-none flex items-center justify-center h-20 w-20 relative border border-foreground/20 rounded-lg bg-background group-hover:border-primary transition-colors duration-300 overflow-hidden">
+        {imageUrl ? (
+          <img src={imageUrl} alt={heading} className="w-full h-full object-cover dark:invert" />
+        ) : icon ? (
+          React.cloneElement(icon, {
+            className: 'w-9 h-9 text-foreground group-hover:text-primary transition-colors duration-300',
+          })
+        ) : (
+          <Zap className="w-9 h-9 text-foreground group-hover:text-primary transition-colors duration-300" />
         )}
-        
-        <h3 className="text-xl font-bold text-foreground mb-3">
-          {heading}
-        </h3>
-        
-        <p className="text-muted-foreground text-sm leading-relaxed">
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col gap-2 h-full overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {/* Animated Heading */}
+        <div className="relative font-semibold text-lg cursor-pointer overflow-hidden select-none w-fit py-1">
+          {/* Base text, always visible underneath */}
+          <span className="text-foreground">{heading}</span>
+          
+          {/* Wipe container with top text layer */}
+          <div className="absolute top-0 left-0 h-full w-full bg-primary origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100 overflow-hidden">
+            <span className="absolute top-0 left-0 py-1 px-px text-primary-foreground whitespace-nowrap">
+              {heading}
+            </span>
+          </div>
+        </div>
+
+        <p className="text-sm text-foreground/70 select-none leading-snug">
           {text}
         </p>
       </div>
@@ -56,4 +60,4 @@ const InteractiveHoverCard: React.FC<InteractiveHoverCardProps> = ({
   );
 };
 
-export default InteractiveHoverCard;
+export default InteractiveHoverCard; 
