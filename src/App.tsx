@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index';
@@ -23,9 +24,9 @@ import AnalyticsTracking from './pages/specialized-growth-solutions/AnalyticsTra
 import ProcessAutomation from './pages/strategic-solutions/ProcessAutomation';
 import NotFound from './pages/NotFound';
 import Layout from './components/layout/Layout';
-import ScrollToTop from './components/ui/scroll-to-top';
-import CookieConsent from './components/ui/cookie-consent';
-import SocialMeta from './components/ui/social-meta';
+import ScrollToTop from './components/ScrollToTop';
+import CookieConsent from './components/CookieConsent';
+import SocialMeta from './components/SocialMeta';
 import EmailMarketing from './pages/growth-solutions/EmailMarketing';
 import AuditInsights from './pages/specialized-growth-solutions/AuditInsights';
 
