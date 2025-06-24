@@ -1,445 +1,178 @@
 
-"use client"
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import {
-  BarChart3,
-  Settings,
-  Funnel,
-  Building,
-  FileText,
-  Zap,
-  Linkedin,
-  Cog,
-  Database,
-  Wrench,
-  Briefcase,
-  DollarSign,
-  UserCheck,
-  Activity,
-  Shield,
-  Network,
-} from "lucide-react"
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Timeline } from '../ui/timeline';
 
-export default function TimelineSection() {
-  const [activeSection, setActiveSection] = useState("growth-solutions")
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .map((entry) => entry.target);
-
-        if (visibleSections.length > 0) {
-          visibleSections.sort(
-            (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
-          );
-          setActiveSection(visibleSections[0].id);
-        }
-      },
-      {
-        rootMargin: "0px 0px -40% 0px",
-        threshold: 0.2,
-      }
-    );
-
-    const sectionsToObserve = document.querySelectorAll("section[id]");
-    sectionsToObserve.forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
-  const sections = [
-    { id: "growth-solutions", title: "Growth Solutions" },
-    { id: "strategic-solutions", title: "Strategic Solutions" },
-  ]
+const TimelineSection: React.FC = () => {
+  const timelineData = [
+    {
+      title: "Discovery & Strategy",
+      content: (
+        <div className="space-y-6">
+          <div className="flex items-start space-x-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <img 
+                src="/Growth Solutions Icons/PerformanceMarketing&PaidMedia.png" 
+                alt="Discovery" 
+                className="w-10 h-10 object-contain dark:brightness-0 dark:invert"
+              />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Deep Dive into Your Business</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                We start by understanding your unique challenges, market position, and growth objectives. Our comprehensive audit reveals what's working, what isn't, and where the biggest opportunities lie.
+              </p>
+              <ul className="mt-4 space-y-2 text-base text-muted-foreground">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Business model analysis & competitive assessment
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Current performance evaluation & gap identification
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Strategic roadmap development & priority setting
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Design & Development",
+      content: (
+        <div className="space-y-6">
+          <div className="flex items-start space-x-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <img 
+                src="/Growth Solutions Icons/Creative Solutions.png" 
+                alt="Design" 
+                className="w-10 h-10 object-contain dark:brightness-0 dark:invert"
+              />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Tailored Solutions Architecture</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Based on our findings, we design and build custom solutions that address your specific challenges. Every strategy is crafted to fit your business reality and growth ambitions.
+              </p>
+              <ul className="mt-4 space-y-2 text-base text-muted-foreground">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Custom growth strategy & execution framework
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Technology integration & automation setup
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Content strategy & creative asset development
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Implementation & Launch",
+      content: (
+        <div className="space-y-6">
+          <div className="flex items-start space-x-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <img 
+                src="/Growth Solutions Icons/Conversion Rate Optimization.png" 
+                alt="Launch" 
+                className="w-10 h-10 object-contain dark:brightness-0 dark:invert"
+              />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Precision Execution & Deployment</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                We execute with speed and precision, ensuring seamless deployment across all channels. Our phased approach minimizes risk while maximizing early wins and momentum.
+              </p>
+              <ul className="mt-4 space-y-2 text-base text-muted-foreground">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Campaign launch & channel activation
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  System integration & process automation
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Team training & knowledge transfer
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Optimization & Scale",
+      content: (
+        <div className="space-y-6">
+          <div className="flex items-start space-x-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <img 
+                src="/Growth Solutions Icons/Search Engine Optimization (SEO) & Website Growth.png" 
+                alt="Scale" 
+                className="w-10 h-10 object-contain dark:brightness-0 dark:invert"
+              />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Continuous Growth & Refinement</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                We continuously monitor, analyze, and optimize performance to ensure sustained growth. Data-driven adjustments and strategic refinements keep you ahead of the competition.
+              </p>
+              <ul className="mt-4 space-y-2 text-base text-muted-foreground">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Performance monitoring & analytics reporting
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  A/B testing & conversion rate optimization
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  Strategic scaling & expansion planning
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section at the top */}
-      <div className="bg-background py-12 sm:py-16">
-        <div className="container">
-          <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4 sm:mb-6 text-left text-primary">Our Solutions</h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-left max-w-4xl leading-relaxed">
-            Whether you're launching something new or optimizing what's already working, we deliver what your business
-            needs to grow, adapt, and move faster.
+    <section className="py-24 bg-background">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            How We Drive Results
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Our proven methodology combines strategic thinking with tactical execution to deliver sustainable growth outcomes.
           </p>
-        </div>
+        </motion.div>
+        
+        <Timeline data={timelineData} />
       </div>
+    </section>
+  );
+};
 
-      {/* Main Content Section */}
-      <div className="bg-background text-foreground flex-grow">
-        <div className="container py-8 flex flex-col lg:flex-row gap-8">
-          {/* Table of Contents - Hidden on mobile, sticky on desktop */}
-          <nav className="hidden lg:block lg:sticky lg:top-24 lg:self-start p-4 lg:w-64">
-            <ul className="space-y-2">
-              {sections.map((section) => (
-                <li key={section.id}>
-                  <button
-                    onClick={() => scrollToSection(section.id)}
-                    className={cn(
-                      "text-lg transition-colors pl-4 border-l-4 w-full text-left",
-                      activeSection === section.id
-                        ? "font-bold text-primary border-primary"
-                        : "text-muted-foreground hover:text-foreground border-transparent"
-                    )}
-                  >
-                    {section.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Main Content */}
-          <main className="flex-1 max-w-none">
-            {/* Growth Solutions Section */}
-            <section id="growth-solutions" className="py-4 mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-primary">Growth Solutions</h2>
-
-              <h3 className="text-xl sm:text-2xl font-semibold mb-4">High-Performance Marketing</h3>
-              <p className="mb-6 text-muted-foreground leading-relaxed">
-                You need more customers, more engagement, and more momentum. If your priority is to attract the right
-                audience, convert consistently, and expand your market reach, our Growth Solutions are built for you. We
-                deliver high-performance marketing strategy and execution that engineers demand, amplifies brand value,
-                and accelerates customer acquisition.
-              </p>
-
-              <h4 className="text-lg sm:text-xl font-semibold mb-4">Core Growth Solutions</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/performance-marketing" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/PerformanceMarketing&PaidMedia.png" alt="Performance Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Performance Marketing & Paid Media</h5>
-                      <p className="text-sm opacity-80">High-ROI ads that convert.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/social-media-marketing" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Social Media Marketing & Brand Engagement.png" alt="Social Media Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Social Media Marketing & Brand Engagement</h5>
-                      <p className="text-sm opacity-80">Build audience, spark action.</p>
-                    </div>
-                  </Link>
-                </Button>
-
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/email-marketing" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Email Marketing & Marketing Automation.png" alt="Email Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Email Marketing & Marketing Automation</h5>
-                      <p className="text-sm opacity-80">Automate nurture, drive loyalty.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/creative-solutions" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Creative Solutions.png" alt="Creative Solutions" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Creative Solutions</h5>
-                      <p className="text-sm opacity-80">Visuals that get results.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/conversion-optimization" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Conversion Rate Optimization.png" alt="Conversion Optimization" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Conversion Rate Optimization (CRO)</h5>
-                      <p className="text-sm opacity-80">Test. Refine. Convert more.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/seo-website-growth" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Search Engine Optimization (SEO) & Website Growth.png" alt="SEO & Website Growth" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Search Engine Optimization (SEO) & Website Growth</h5>
-                      <p className="text-sm opacity-80">Rank higher. Grow faster.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/website-solutions" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Website Solutions.png" alt="Website Solutions" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Website Solutions</h5>
-                      <p className="text-sm opacity-80">Seamless, scalable, conversion-ready.</p>
-                    </div>
-                  </Link>
-                </Button>
-              </div>
-
-              
-              <h4 className="text-lg sm:text-xl font-semibold mb-4">Specialized Growth Solutions</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/audit-insights" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Deep Dive Audit & Strategic Insights.png" alt="Deep Dive Audit" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Deep Dive Audit & Strategic Insights</h5>
-                      <p className="text-sm opacity-80">Clarity through expert analysis.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/analytics-tracking" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Analytics and Event Tracking Setup.png" alt="Analytics Tracking" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Analytics and Event Tracking Setup</h5>
-                      <p className="text-sm opacity-80">Track what matters, measure what works.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/lead-generation" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Lead Generation & Funnel Strategy.png" alt="Lead Generation" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Lead Generation & Funnel Strategy</h5>
-                      <p className="text-sm opacity-80">Build funnels that convert.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/brand-architecture" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Brand Architecture & Strategy.png" alt="Brand Architecture" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Brand Architecture & Strategy</h5>
-                      <p className="text-sm opacity-80">Define, differentiate, scale.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/content-strategy" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Content Strategy & Planning.png" alt="Content Strategy" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Content Strategy & Marketing</h5>
-                      <p className="text-sm opacity-80">Create content that drives action.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/ai-content" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/AI-Accelerated Content Production Pipelines.png" alt="AI Content" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">AI-Accelerated Content Production Pipelines</h5>
-                      <p className="text-sm opacity-80">Scale content with AI precision.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/executive-branding" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Executive Personal Branding & LinkedIn Marketing.png" alt="Executive Branding" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Executive Personal Branding & LinkedIn Marketing</h5>
-                      <p className="text-sm opacity-80">Elevate presence, grow influence.</p>
-                    </div>
-                  </Link>
-                </Button>
-              </div>
-
-              <div className="text-center">
-              <Button className="font-semibold text-lg mb-4" size="lg" asChild>
-                  <a href="/contact">Ready to move faster? Let's talk.</a>
-                </Button>
-              </div>
-            </section>
-
-            {/* Strategic Solutions Section */}
-            <section id="strategic-solutions" className="py-4 mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-primary">Strategic Solutions</h2>
-
-              <p className="mb-6 text-muted-foreground leading-relaxed">
-                You need to improve efficiency, automate intelligently, and ensure operations scale without chaos. If
-                you're navigating operational bottlenecks, automation gaps, or complex scaling challenges, our Strategic
-                Solutions offer high-ROI tailored strategy and implementations that are built for precision,
-                scalability, and efficiency. From workflow orchestration to platform optimization, we help you execute
-                at the next level with minimal disruption.
-              </p>
-
-              <h4 className="text-lg sm:text-xl font-semibold mb-4">Core Strategic Solutions</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/strategic-solutions/process-automation">
-                    <Cog className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold">Process & Workflow Automation</h5>
-                      <p className="text-sm opacity-80">Automate execution. Eliminate friction.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/strategic-solutions/digital-systems-enablement">
-                    <Database className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold">Digital Systems Enablement</h5>
-                      <p className="text-sm opacity-80">Optimize platforms. Empower teams.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/strategic-solutions/custom-solution-engineering">
-                    <Wrench className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold">Custom Solution Engineering</h5>
-                      <p className="text-sm opacity-80">Solve complex. Deliver fast.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/strategic-solutions/enterprise-evolution-strategic-transformation">
-                    <Briefcase className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold">Enterprise Evolution & Strategic Transformation</h5>
-                      <p className="text-sm opacity-80">Reshape. Scale. Future-proof.</p>
-                    </div>
-                  </Link>
-                </Button>
-              </div>
-
-              <h4 className="text-lg sm:text-xl font-semibold mb-4">Solutions By Function</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <DollarSign className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Finance</h5>
-                    <p className="text-sm text-muted-foreground">Automate reporting. Accelerate reconciliation.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Activity className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Operations</h5>
-                    <p className="text-sm text-muted-foreground">Unblock execution. Speed up critical workflows.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Shield className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Compliance & Governance</h5>
-                    <p className="text-sm text-muted-foreground">Reduce risk. Ensure audit-ready control.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Network className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Cross-Functional Leadership</h5>
-                    <p className="text-sm text-muted-foreground">Align departments. Orchestrate complex delivery.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <Button className="font-semibold text-lg mb-4" size="lg" asChild>
-                  <a href="/contact">Ready to move faster? Let's talk.</a>
-                </Button>
-              </div>
-            </section>
-          </main>
-        </div>
-      </div>
-    </div>
-  )
-}
+export default TimelineSection;

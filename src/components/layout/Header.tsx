@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
@@ -92,6 +93,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     navigate('/');
+    setIsMenuOpen(false); // Close mobile menu when logo is clicked
     setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, 100);
@@ -114,6 +116,21 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     setActiveSubDropdown(null);
   };
 
+  const handleMobileMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+    // Reset dropdowns when closing mobile menu
+    if (isMenuOpen) {
+      setActiveDropdown(null);
+      setActiveSubDropdown(null);
+    }
+  };
+
+  const handleMobileLinkClick = () => {
+    setIsMenuOpen(false);
+    setActiveDropdown(null);
+    setActiveSubDropdown(null);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-all duration-300">
       <div className="container">
@@ -125,7 +142,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             <img
               src={LogoTeal}
               alt="Perssonify Logo"
-              className="h-8 w-auto object-contain"
+              className="h-10 w-auto object-contain min-h-10"
+              style={{ minHeight: '2.5rem', height: '2.5rem' }}
             />
           </button>
 
@@ -236,22 +254,10 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           {/* Right side buttons */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="flex items-center space-x-2">
-              <button 
-                onClick={toggleDarkMode}
-                className="p-1 hover:bg-muted rounded transition-colors"
-                aria-label="Switch to light mode"
-              >
-              </button>
               <Switch
                 checked={isDarkMode}
-                setChecked={toggleDarkMode}
+                onCheckedChange={toggleDarkMode}
               />
-              <button 
-                onClick={toggleDarkMode}
-                className="p-1 hover:bg-muted rounded transition-colors"
-                aria-label="Switch to dark mode"
-              >
-              </button>
             </div>
             <Button asChild size="sm" className="h-8 hidden sm:inline-flex">
               <Link to="/contact">Get Started</Link>
@@ -260,7 +266,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={handleMobileMenuToggle}
               className="w-8 h-8 p-0 lg:hidden"
             >
               {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -268,7 +274,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           </div>
         </div>
 
-        {/* Mobile menu - keep existing code */}
+        {/* Mobile menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -321,10 +327,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                                     <Link
                                       key={dropdownItem.name}
                                       to={dropdownItem.href}
-                                      onClick={() => {
-                                        setIsMenuOpen(false);
-                                        setActiveDropdown(null);
-                                      }}
+                                      onClick={handleMobileLinkClick}
                                       className="block px-12 py-2 text-xs text-foreground/70 hover:text-primary transition-colors"
                                     >
                                       {dropdownItem.name}
@@ -339,7 +342,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                     ) : (
                       <Link
                         to={item.href}
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={handleMobileLinkClick}
                         className={`block px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
                           isActive(item.href) ? 'text-primary' : 'text-foreground/80'
                         }`}
@@ -351,7 +354,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                 ))}
                 <div className="px-4 py-2">
                   <Button asChild className="w-full">
-                    <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                    <Link to="/contact" onClick={handleMobileLinkClick}>
                       Get Started
                     </Link>
                   </Button>
