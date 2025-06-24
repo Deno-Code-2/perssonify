@@ -46,7 +46,7 @@ const InteractiveHoverCard: React.FC<InteractiveHoverCardProps> = ({
           
           {/* Wipe container with top text layer */}
           <div className="absolute top-0 left-0 h-full w-full bg-primary origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100 overflow-hidden">
-            <span className="absolute top-0 left-0 py-1 px-px text-primary-foreground whitespace-nowrap">
+            <span className="absolute top-0 left-0 py-1 px-px text-primary-foreground whitespace-nowrap text-center">
               {heading}
             </span>
           </div>
