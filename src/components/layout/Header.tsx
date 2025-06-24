@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
@@ -93,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     navigate('/');
-    setIsMenuOpen(false); // Close mobile menu when logo is clicked
+    setIsMenuOpen(false);
     setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, 100);
@@ -118,7 +117,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const handleMobileMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
-    // Reset dropdowns when closing mobile menu
     if (isMenuOpen) {
       setActiveDropdown(null);
       setActiveSubDropdown(null);
@@ -142,8 +140,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             <img
               src={LogoTeal}
               alt="Perssonify Logo"
-              className="h-10 w-auto object-contain min-h-10"
-              style={{ minHeight: '2.5rem', height: '2.5rem' }}
+              className="h-12 w-auto object-contain min-h-12 md:h-10 md:min-h-10"
+              style={{ minHeight: '3rem', height: '3rem' }}
             />
           </button>
 
@@ -181,9 +179,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           }}
                         >
                           <div className="flex">
-                            {/* First level menu */}
                             <div className="py-2 min-w-[200px] border-r border-border">
-                              {item.sections?.map((section, sectionIndex) => (
+                              {item.sections?.map((section) => (
                                 <div 
                                   key={section.title}
                                   onMouseEnter={() => setActiveSubDropdown(section.title)}
@@ -200,7 +197,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                               ))}
                             </div>
                             
-                            {/* Second level menu */}
                             <AnimatePresence>
                               {activeSubDropdown && (
                                 <motion.div
@@ -251,12 +247,11 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             ))}
           </nav>
 
-          {/* Right side buttons */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="flex items-center space-x-2">
               <Switch
                 checked={isDarkMode}
-                onCheckedChange={toggleDarkMode}
+                setChecked={toggleDarkMode}
               />
             </div>
             <Button asChild size="sm" className="h-8 hidden sm:inline-flex">
@@ -274,7 +269,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           </div>
         </div>
 
-        {/* Mobile menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
