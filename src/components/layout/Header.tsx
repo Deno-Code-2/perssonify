@@ -1,6 +1,7 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,7 +15,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -24,61 +24,55 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     { name: 'About', href: '/about' },
     { name: 'Insights', href: '/insights' },
     { 
-      name: 'Growth Solutions', 
-      href: '/growth-solutions',
+      name: 'Solutions', 
+      href: '#',
       hasDropdown: true,
       sections: [
         {
-          title: 'Core Growth Solutions',
+          title: 'Growth Solutions',
           href: '/growth-solutions',
+          description: 'High-performance marketing strategy and execution',
           items: [
             { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
-            { name: 'Social Media Marketing & Brand Engagement', href: '/growth-solutions/social-media-marketing' },
-            { name: 'Email Marketing & Marketing Automation', href: '/growth-solutions/email-marketing' },
+            { name: 'Social Media Marketing', href: '/growth-solutions/social-media-marketing' },
+            { name: 'Email Marketing & Automation', href: '/growth-solutions/email-marketing' },
             { name: 'Creative Solutions', href: '/growth-solutions/creative-solutions' },
-            { name: 'Conversion Rate Optimization (CRO)', href: '/growth-solutions/conversion-optimization' },
-            { name: 'Search Engine Optimization (SEO) & Website Growth', href: '/growth-solutions/seo-website-growth' },
+            { name: 'Conversion Rate Optimization', href: '/growth-solutions/conversion-optimization' },
+            { name: 'SEO & Website Growth', href: '/growth-solutions/seo-website-growth' },
             { name: 'Website Solutions', href: '/growth-solutions/website-solutions' },
           ]
         },
         {
-          title: 'Specialized Growth Solutions',
-          href: '/specialized-growth-solutions',
+          title: 'Core Growth Solutions',
+          href: '/core-growth-solutions',
+          description: 'Comprehensive digital growth solutions for brands that demand impact',
           items: [
-            { name: 'Deep Dive Audit & Strategic Insights', href: '/specialized-growth-solutions/audit-insights' },
-            { name: 'Analytics and Event Tracking Setup', href: '/specialized-growth-solutions/analytics-tracking' },
-            { name: 'Lead Generation & Funnel Strategy', href: '/specialized-growth-solutions/lead-generation' },
-            { name: 'Brand Architecture & Strategy', href: '/specialized-growth-solutions/brand-architecture' },
-            { name: 'Content Strategy & Planning', href: '/specialized-growth-solutions/content-strategy' },
-            { name: 'AI-Accelerated Content Production Pipelines', href: '/specialized-growth-solutions/ai-content' },
-            { name: 'Executive Personal Branding & LinkedIn Marketing', href: '/specialized-growth-solutions/executive-branding' },
+            { name: 'Brand Positioning & Strategy', href: '/core-growth-solutions/brand-positioning' },
+            { name: 'Lead Generation Systems', href: '/core-growth-solutions/lead-generation' },
+            { name: 'Revenue Optimization', href: '/core-growth-solutions/revenue-optimization' },
+            { name: 'Growth Analytics & Insights', href: '/core-growth-solutions/analytics' },
           ]
-        }
-      ]
-    },
-    { 
-      name: 'Strategic Solutions', 
-      href: '/strategic-solutions',
-      hasDropdown: true,
-      sections: [
+        },
         {
-          title: 'Core Strategic Solutions',
+          title: 'Strategic Solutions',
           href: '/strategic-solutions',
+          description: 'Tailored strategy and implementations for operational efficiency',
           items: [
             { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
             { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems' },
             { name: 'Custom Solution Engineering', href: '/strategic-solutions/custom-engineering' },
-            { name: 'Enterprise Evolution & Strategic Transformation', href: '/strategic-solutions/enterprise-transformation' },
+            { name: 'Enterprise Transformation', href: '/strategic-solutions/enterprise-transformation' },
           ]
         },
         {
-          title: 'Solutions By Function',
-          href: '/strategic-solutions/function',
+          title: 'Specialized Solutions',
+          href: '/specialized-growth-solutions',
+          description: 'Expert-level solutions for specific business challenges',
           items: [
-            { name: 'Finance', href: '/strategic-solutions/finance' },
-            { name: 'Operations', href: '/strategic-solutions/operations' },
-            { name: 'Compliance & Governance', href: '/strategic-solutions/compliance' },
-            { name: 'Cross-Functional Leadership', href: '/strategic-solutions/leadership' },
+            { name: 'Deep Dive Audit & Insights', href: '/specialized-growth-solutions/audit-insights' },
+            { name: 'Analytics & Event Tracking', href: '/specialized-growth-solutions/analytics-tracking' },
+            { name: 'AI-Accelerated Content', href: '/specialized-growth-solutions/ai-content' },
+            { name: 'Executive Personal Branding', href: '/specialized-growth-solutions/executive-branding' },
           ]
         }
       ]
@@ -101,7 +95,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setActiveDropdown(null);
-        setActiveSubDropdown(null);
       }
     };
 
@@ -111,7 +104,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   const handleDropdownToggle = (itemName: string) => {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
-    setActiveSubDropdown(null);
   };
 
   return (
@@ -125,7 +117,8 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             <img
               src={LogoTeal}
               alt="Perssonify Logo"
-              className="h-8 w-auto object-contain"
+              className="h-8 w-auto object-contain min-h-[32px] min-w-[120px]"
+              style={{ minHeight: '32px', minWidth: '120px' }}
             />
           </button>
 
@@ -156,64 +149,38 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full left-0 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg overflow-hidden z-50"
-                          onMouseLeave={() => {
-                            setActiveDropdown(null);
-                            setActiveSubDropdown(null);
-                          }}
+                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-xl shadow-xl overflow-hidden z-50 min-w-[800px]"
+                          onMouseLeave={() => setActiveDropdown(null)}
                         >
-                          <div className="flex">
-                            {/* First level menu */}
-                            <div className="py-2 min-w-[200px] border-r border-border">
-                              {item.sections?.map((section, sectionIndex) => (
-                                <div 
-                                  key={section.title}
-                                  onMouseEnter={() => setActiveSubDropdown(section.title)}
-                                  className="relative"
+                          <div className="grid grid-cols-2 gap-1 p-4">
+                            {item.sections?.map((section, sectionIndex) => (
+                              <div key={section.title} className="p-3 rounded-lg hover:bg-muted/50 transition-colors">
+                                <Link
+                                  to={section.href}
+                                  className="block mb-2"
+                                  onClick={() => setActiveDropdown(null)}
                                 >
-                                  <Link
-                                    to={section.href || '#'}
-                                    className="flex items-center justify-between px-4 py-3 text-sm text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
-                                  >
-                                    <span className="font-medium">{section.title}</span>
-                                    <ChevronRight className="w-3 h-3" />
-                                  </Link>
-                                </div>
-                              ))}
-                            </div>
-                            
-                            {/* Second level menu */}
-                            <AnimatePresence>
-                              {activeSubDropdown && (
-                                <motion.div
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  exit={{ opacity: 0, x: -10 }}
-                                  transition={{ duration: 0.15 }}
-                                  className="py-2 min-w-[300px]"
-                                >
-                                  {item.sections?.find(s => s.title === activeSubDropdown)?.items.map((subItem, index) => (
-                                    <motion.div
+                                  <h3 className="font-semibold text-foreground hover:text-primary transition-colors mb-1">
+                                    {section.title}
+                                  </h3>
+                                  <p className="text-xs text-muted-foreground mb-3">
+                                    {section.description}
+                                  </p>
+                                </Link>
+                                <div className="space-y-1">
+                                  {section.items.slice(0, 4).map((subItem) => (
+                                    <Link
                                       key={subItem.name}
-                                      initial={{ opacity: 0, x: -10 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      transition={{ delay: index * 0.03 }}
+                                      to={subItem.href}
+                                      className="block text-xs text-foreground/70 hover:text-primary transition-colors py-1"
+                                      onClick={() => setActiveDropdown(null)}
                                     >
-                                      <Link
-                                        to={subItem.href}
-                                        className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/50 transition-colors"
-                                        onClick={() => {
-                                          setActiveDropdown(null);
-                                          setActiveSubDropdown(null);
-                                        }}
-                                      >
-                                        {subItem.name}
-                                      </Link>
-                                    </motion.div>
+                                      {subItem.name}
+                                    </Link>
                                   ))}
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
+                                </div>
+                              </div>
+                            ))}
                           </div>
                         </motion.div>
                       )}
@@ -236,22 +203,10 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           {/* Right side buttons */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="flex items-center space-x-2">
-              <button 
-                onClick={toggleDarkMode}
-                className="p-1 hover:bg-muted rounded transition-colors"
-                aria-label="Switch to light mode"
-              >
-              </button>
               <Switch
                 checked={isDarkMode}
                 setChecked={toggleDarkMode}
               />
-              <button 
-                onClick={toggleDarkMode}
-                className="p-1 hover:bg-muted rounded transition-colors"
-                aria-label="Switch to dark mode"
-              >
-              </button>
             </div>
             <Button asChild size="sm" className="h-8 hidden sm:inline-flex">
               <Link to="/contact">Get Started</Link>
@@ -268,7 +223,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           </div>
         </div>
 
-        {/* Mobile menu - keep existing code */}
+        {/* Mobile menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -289,9 +244,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                               activeDropdown === `mobile-${item.name}` ? null : `mobile-${item.name}`
                             )
                           }
-                          className={`flex items-center justify-between w-full px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                            isActive(item.href) ? 'text-primary' : 'text-foreground/80'
-                          }`}
+                          className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium transition-colors hover:text-primary text-foreground/80"
                         >
                           <span>{item.name}</span>
                           <ChevronDown 
@@ -312,12 +265,17 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                             >
                               {item.sections?.map((section) => (
                                 <div key={section.title}>
-                                  <div className="px-8 py-1">
-                                    <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                                      {section.title}
-                                    </h5>
-                                  </div>
-                                  {section.items.map((dropdownItem) => (
+                                  <Link
+                                    to={section.href}
+                                    onClick={() => {
+                                      setIsMenuOpen(false);
+                                      setActiveDropdown(null);
+                                    }}
+                                    className="block px-6 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                                  >
+                                    {section.title}
+                                  </Link>
+                                  {section.items.slice(0, 2).map((dropdownItem) => (
                                     <Link
                                       key={dropdownItem.name}
                                       to={dropdownItem.href}
@@ -325,7 +283,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                                         setIsMenuOpen(false);
                                         setActiveDropdown(null);
                                       }}
-                                      className="block px-12 py-2 text-xs text-foreground/70 hover:text-primary transition-colors"
+                                      className="block px-8 py-1 text-xs text-foreground/70 hover:text-primary transition-colors"
                                     >
                                       {dropdownItem.name}
                                     </Link>
@@ -340,9 +298,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                       <Link
                         to={item.href}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`block px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                          isActive(item.href) ? 'text-primary' : 'text-foreground/80'
-                        }`}
+                        className="block px-4 py-2 text-sm font-medium transition-colors hover:text-primary text-foreground/80"
                       >
                         {item.name}
                       </Link>

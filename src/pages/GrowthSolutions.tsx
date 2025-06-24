@@ -1,11 +1,13 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TrendingUp, Users, Mail, Palette, Target, Search, Globe, ArrowRight, Zap, CheckCircle } from 'lucide-react';
+import { TrendingUp, Users, Mail, Palette, Target, Search, Globe, ArrowRight, Zap, CheckCircle, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { WavyBackground } from '@/components/ui/wavy-background';
 import StartGrowingForm from '@/components/forms/StartGrowingForm';
 import { motion } from 'framer-motion';
+import ThemeBreadcrumb from '@/components/ui/theme-breadcrumb';
 
 const GrowthSolutions: React.FC = () => {
   const coreServices = [
@@ -64,6 +66,10 @@ const GrowthSolutions: React.FC = () => {
 
   return (
     <div className="bg-background text-foreground">
+      <div className="container pt-20">
+        <ThemeBreadcrumb />
+      </div>
+      
       {/* Hero Section */}
       <WavyBackground className="py-16 md:py-24 mt-8 md:mt-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
@@ -93,6 +99,44 @@ const GrowthSolutions: React.FC = () => {
           </motion.div>
         </div>
       </WavyBackground>
+
+      {/* Core Growth Solutions CTA */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 to-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <Card className="border-0 shadow-2xl bg-gradient-to-br from-primary/10 to-primary/5">
+              <CardContent className="p-12">
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center">
+                    <Star className="w-10 h-10 text-primary" />
+                  </div>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                  Core Growth Solutions
+                </h2>
+                <p className="text-xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed">
+                  Comprehensive Digital Growth Solutions for Brands that Demand Impact. 
+                  Perssonify's Growth Solutions are built to solve high-impact marketing challenges—whether it's increasing brand awareness, generating high-quality leads, or optimizing conversion rates. Every solution is designed to drive measurable outcomes and support long-term growth.
+                </p>
+                <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
+                  Our approach combines strategy, execution, and optimization into a unified system. From brand positioning to paid performance, we help businesses convert attention into traction, and traction into scale.
+                </p>
+                <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+                  <Link to="/core-growth-solutions">
+                    Explore Core Growth Solutions
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Core Services */}
       <section className="py-24 bg-background">

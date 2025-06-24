@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap } from 'lucide-react';
@@ -20,7 +21,7 @@ const Hero: React.FC = () => {
             Growth & Strategic Solutions
           </motion.div>
 
-          {/* Main Headline - Adjusted for single line */}
+          {/* Main Headline - Fixed for mobile */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,7 +61,7 @@ const Hero: React.FC = () => {
             We help businesses grow fast and scale smart. The right solution. The right time. Delivered.
           </motion.p>
 
-          {/* Interactive Hover Cards */}
+          {/* Interactive Hover Cards - Fixed for mobile/tablet */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,6 +73,7 @@ const Hero: React.FC = () => {
                 imageUrl="/Icons/Growth Solutions.png"
                 heading="Growth Solutions"
                 text="High-performance marketing strategy and execution that amplifies brand value and accelerates customer acquisition."
+                className="text-left sm:text-center lg:text-left"
               />
             </Link>
             
@@ -80,6 +82,7 @@ const Hero: React.FC = () => {
                 imageUrl="/Icons/Strategic Solutions.png"
                 heading="Strategic Solutions"
                 text="Tailored strategy and implementations built for precision, scalability, and operational efficiency."
+                className="text-left sm:text-center lg:text-left"
               />
             </Link>
           </motion.div>
