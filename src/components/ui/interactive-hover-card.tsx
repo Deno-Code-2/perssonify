@@ -39,19 +39,19 @@ const InteractiveHoverCard: React.FC<InteractiveHoverCardProps> = ({
 
       {/* Content */}
       <div className="flex flex-col gap-2 h-full overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-        {/* Animated Heading */}
-        <div className="relative font-semibold text-lg cursor-pointer overflow-hidden select-none w-fit py-1">
-          {/* Base text, always visible underneath */}
-          <span className="text-foreground">{heading}</span>
-          
-          {/* Wipe container with top text layer */}
-          <div className="absolute top-0 left-0 h-full w-full bg-primary origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100 overflow-hidden">
-            <span className="absolute top-0 left-0 py-1 px-px text-primary-foreground whitespace-nowrap text-center">
-              {heading}
-            </span>
+        {/* Centered Heading Horizontally Only */}
+        <div className="flex items-center justify-center">
+          <div className="relative font-semibold text-lg cursor-pointer overflow-hidden select-none w-fit py-1">
+            {/* Base text, always visible underneath */}
+            <span className="text-foreground">{heading}</span>
+            {/* Wipe container with top text layer */}
+            <div className="absolute top-0 left-0 h-full w-full bg-primary origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100 overflow-hidden">
+              <span className="absolute top-0 left-0 py-1 px-px text-primary-foreground whitespace-nowrap">
+                {heading}
+              </span>
+            </div>
           </div>
         </div>
-
         <p className="text-sm text-foreground/70 select-none leading-snug">
           {text}
         </p>
