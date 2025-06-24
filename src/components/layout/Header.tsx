@@ -92,7 +92,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     navigate('/');
-    setIsMenuOpen(false);
     setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, 100);
@@ -115,20 +114,6 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     setActiveSubDropdown(null);
   };
 
-  const handleMobileMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-    if (isMenuOpen) {
-      setActiveDropdown(null);
-      setActiveSubDropdown(null);
-    }
-  };
-
-  const handleMobileLinkClick = () => {
-    setIsMenuOpen(false);
-    setActiveDropdown(null);
-    setActiveSubDropdown(null);
-  };
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-all duration-300">
       <div className="container">
@@ -140,8 +125,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             <img
               src={LogoTeal}
               alt="Perssonify Logo"
-              className="h-12 w-auto object-contain min-h-12 md:h-10 md:min-h-10"
-              style={{ minHeight: '3rem', height: '3rem' }}
+              className="h-8 w-auto object-contain"
             />
           </button>
 
@@ -179,8 +163,9 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           }}
                         >
                           <div className="flex">
+                            {/* First level menu */}
                             <div className="py-2 min-w-[200px] border-r border-border">
-                              {item.sections?.map((section) => (
+                              {item.sections?.map((section, sectionIndex) => (
                                 <div 
                                   key={section.title}
                                   onMouseEnter={() => setActiveSubDropdown(section.title)}
@@ -197,6 +182,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                               ))}
                             </div>
                             
+                            {/* Second level menu */}
                             <AnimatePresence>
                               {activeSubDropdown && (
                                 <motion.div
@@ -247,12 +233,25 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             ))}
           </nav>
 
+          {/* Right side buttons */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="flex items-center space-x-2">
+              <button 
+                onClick={toggleDarkMode}
+                className="p-1 hover:bg-muted rounded transition-colors"
+                aria-label="Switch to light mode"
+              >
+              </button>
               <Switch
                 checked={isDarkMode}
                 setChecked={toggleDarkMode}
               />
+              <button 
+                onClick={toggleDarkMode}
+                className="p-1 hover:bg-muted rounded transition-colors"
+                aria-label="Switch to dark mode"
+              >
+              </button>
             </div>
             <Button asChild size="sm" className="h-8 hidden sm:inline-flex">
               <Link to="/contact">Get Started</Link>
@@ -261,7 +260,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={handleMobileMenuToggle}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="w-8 h-8 p-0 lg:hidden"
             >
               {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -269,6 +268,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           </div>
         </div>
 
+        {/* Mobile menu - keep existing code */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -321,7 +321,10 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                                     <Link
                                       key={dropdownItem.name}
                                       to={dropdownItem.href}
-                                      onClick={handleMobileLinkClick}
+                                      onClick={() => {
+                                        setIsMenuOpen(false);
+                                        setActiveDropdown(null);
+                                      }}
                                       className="block px-12 py-2 text-xs text-foreground/70 hover:text-primary transition-colors"
                                     >
                                       {dropdownItem.name}
@@ -336,7 +339,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                     ) : (
                       <Link
                         to={item.href}
-                        onClick={handleMobileLinkClick}
+                        onClick={() => setIsMenuOpen(false)}
                         className={`block px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
                           isActive(item.href) ? 'text-primary' : 'text-foreground/80'
                         }`}
@@ -348,7 +351,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                 ))}
                 <div className="px-4 py-2">
                   <Button asChild className="w-full">
-                    <Link to="/contact" onClick={handleMobileLinkClick}>
+                    <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                       Get Started
                     </Link>
                   </Button>
