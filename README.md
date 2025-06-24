@@ -1,73 +1,181 @@
-# Welcome to your Lovable project
+# Perssonify - Growth & Scale Solutions
 
-## Project info
+## About Perssonify
 
-**URL**: https://lovable.dev/projects/de2d4132-cb98-48b9-9c33-5c12860b23f9
+We bring growth and scale to life. Perssonify helps businesses grow faster, scale with confidence, and solve what holds progress back where it matters most.
 
-## How can I edit this code?
+### Our Mission
+To empower businesses with the strategic insights and operational excellence needed to thrive in today's competitive landscape.
 
-There are several ways of editing your application.
+### What We Do
 
-**Use Lovable**
+**Two Solution Families:**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/de2d4132-cb98-48b9-9c33-5c12860b23f9) and start prompting.
+1. **Growth Solutions** - High-performance growth marketing that drives demand, accelerates acquisition, and amplifies brand impact.
 
-Changes made via Lovable will be committed automatically to this repo.
+2. **Strategic Solutions** - High-ROI business process enhancement that streamlines operations, automates intelligently, and scales with precision.
 
-**Use your preferred IDE**
+Whether you're launching something new or optimizing what's already working, we deliver what your business needs to grow, adapt, and move faster.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Our Results
+- 350% average revenue growth for our clients
+- 200+ businesses successfully transformed
+- $50M+ in additional revenue generated
+- 99% client satisfaction rate
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Industries We Serve
+We work with businesses across all industries, from startups to enterprises, helping them overcome scaling challenges and achieve sustainable growth.
 
-Follow these steps:
+## Technical Features
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Navigation & User Experience
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+#### Scroll-to-Top Functionality
+The website includes automatic scroll-to-top functionality that ensures users always start at the top of any page they navigate to. This is implemented through:
 
-# Step 3: Install the necessary dependencies.
-npm i
+- **ScrollToTop Component**: Located at `src/components/ScrollToTop.tsx`
+- **Implementation**: Uses React Router's `useLocation` hook to detect route changes
+- **Behavior**: Automatically scrolls to the top of the page instantly when navigating between pages
+- **Integration**: Added to the main App component to work across all routes
+- **Reliability**: Uses both immediate scroll and setTimeout to ensure consistent behavior
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+#### Logo Navigation
+Both header and footer logos are clickable and will:
+- Navigate to the homepage (`/`)
+- Automatically scroll to the top of the page
+- Provide visual feedback on hover
+- Work in both light and dark mode with appropriate logo variants
 
-**Edit a file directly in GitHub**
+#### Blog System
+The website features a comprehensive blog system with:
+- **Blog List View**: Grid layout showing all blog posts with cards
+- **Blog Detail View**: Full blog post content with proper formatting
+- **Rich Content**: Support for HTML content, images, and styling
+- **Metadata**: Author, date, read time, categories, and tags
+- **Responsive Design**: Works perfectly on all device sizes
+- **SEO Optimized**: Proper meta tags and structured content
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### SEO Optimization
 
-**Use GitHub Codespaces**
+The website is fully optimized for search engines with:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+#### Meta Tags
+- **Primary Meta Tags**: Title, description, keywords, author, robots
+- **Open Graph Tags**: For Facebook and social media sharing with proper image dimensions
+- **Twitter Cards**: Optimized for Twitter sharing with large image previews
+- **Geo Tags**: Location-based SEO for better local search visibility
+- **Language Tags**: Proper language and locale settings for international SEO
+- **Mobile Meta Tags**: Optimized for mobile devices and web apps
 
-## What technologies are used for this project?
+#### Structured Data
+- **Organization Schema**: JSON-LD markup for business information
+- **Contact Information**: Structured contact details for better search visibility
+- **Services**: Listed services for improved service-based searches
+- **Social Media Links**: All social profiles properly linked and indexed
 
-This project is built with:
+#### Technical SEO Features
+- **Canonical URLs**: Prevents duplicate content issues
+- **Mobile Optimization**: Fully responsive design with proper viewport settings
+- **Performance**: Preconnect tags for external resources to improve loading speed
+- **Accessibility**: Proper ARIA labels and semantic HTML structure
+- **Fast Loading**: Optimized images and efficient component loading
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Code Structure & Maintainability
 
-## How can I deploy this project?
+#### Component Organization
+- **Modular Components**: Small, focused components for better maintainability
+- **Type Safety**: Full TypeScript implementation with proper interfaces
+- **Consistent Naming**: Clear, descriptive component and file names
+- **Separation of Concerns**: Business logic separated from UI components
+- **Reusable UI**: Shadcn/UI components for consistent design system
 
-Simply open [Lovable](https://lovable.dev/projects/de2d4132-cb98-48b9-9c33-5c12860b23f9) and click on Share -> Publish.
+#### Performance Features
+- **Tree Shaking**: Only imported icons and components are bundled
+- **Code Splitting**: Automatic code splitting with Vite for faster loading
+- **Optimized Images**: Proper image optimization and lazy loading
+- **Minimal Bundle**: Efficient dependency management and bundle optimization
 
-## Can I connect a custom domain to my Lovable project?
+### Design System
 
-Yes, you can!
+#### Light/Dark Mode Support
+- **Automatic Detection**: Respects user's system preferences
+- **Manual Toggle**: Theme switcher in header and footer
+- **Persistent Storage**: Remembers user's choice across sessions
+- **Logo Variants**: Different logos for light and dark themes
+- **Consistent Theming**: All components support both themes
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+#### Responsive Design
+- **Mobile First**: Designed for mobile devices first
+- **Breakpoint System**: Tailwind CSS responsive breakpoints
+- **Flexible Layouts**: Grid and flexbox layouts that adapt to screen size
+- **Touch Friendly**: Proper touch targets and mobile interactions
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Development Setup
+
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for Production**
+   ```bash
+   npm run build
+   ```
+
+4. **Preview Production Build**
+   ```bash
+   npm run preview
+   ```
+
+### Technologies Used
+- **React 18** with TypeScript for robust development
+- **Vite** for fast build tooling and development
+- **Tailwind CSS** for utility-first styling
+- **Framer Motion** for smooth animations
+- **React Router** for client-side navigation
+- **Shadcn/UI** for consistent component library
+- **Lucide React** for beautiful icons
+
+### Deployment
+
+The project is configured for deployment on Vercel with:
+- **Static Site Generation**: Optimized for fast loading
+- **Custom Domain Support**: Easy domain configuration
+- **Automatic Deployments**: Connected to Git for continuous deployment
+- **Environment Variables**: Secure configuration management
+
+### Get Started
+Ready to transform your business? Contact us to schedule a consultation and discover how we can help you achieve your growth objectives.
+
+## Maintenance Mode
+
+You can easily enable or disable a full-site Maintenance Mode for your website. This will hide the entire site and show a maintenance message to all visitors.
+
+### How to Enable Maintenance Mode
+1. Open `src/App.tsx` in your code editor.
+2. At the top of the file, find the following line:
+   ```js
+   const MAINTENANCE_MODE = false;
+   ```
+3. Change it to:
+   ```js
+   const MAINTENANCE_MODE = true;
+   ```
+4. Save the file. Your site will now display a maintenance message to all visitors.
+
+### How to Disable Maintenance Mode
+1. Open `src/App.tsx`.
+2. Set the toggle back to `false`:
+   ```js
+   const MAINTENANCE_MODE = false;
+   ```
+3. Save the file. Your full website will be visible again.
+
+---
+
+*© 2024 Perssonify. All rights reserved.*
