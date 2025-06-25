@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
@@ -110,7 +109,15 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
               <img
                 src={LogoTeal}
                 alt="Perssonify Logo"
-                className="h-8 w-auto object-contain"
+                className="object-contain"
+                style={{ 
+                  height: '50px', 
+                  width: '150px',
+                  minHeight: '50px', 
+                  minWidth: '150px',
+                  maxHeight: '50px',
+                  maxWidth: '150px'
+                }}
               />
             </button>
             <p className="mb-3 text-xs text-muted-foreground">Empowering businesses with growth and strategic solutions worldwide.</p>

@@ -125,18 +125,25 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-all duration-300">
-      <div className="container">
+      <div className="container relative">
         <div className="flex items-center justify-between h-16">
+          {/* Fixed Size Logo */}
           <button 
             onClick={handleLogoClick}
-            className="flex items-center space-x-2 md:ml-0 cursor-pointer hover:opacity-80 transition-opacity"
-            style={{ minHeight: '40px', minWidth: '140px' }}
+            className="flex items-center cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0"
           >
             <img
               src={LogoTeal}
               alt="Perssonify Logo"
-              className="h-10 w-auto object-contain"
-              style={{ minHeight: '40px', minWidth: '140px' }}
+              className="object-contain"
+              style={{ 
+                height: '50px', 
+                width: '150px',
+                minHeight: '50px', 
+                minWidth: '150px',
+                maxHeight: '50px',
+                maxWidth: '150px'
+              }}
             />
           </button>
 
@@ -167,35 +174,38 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full right-0 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-xl overflow-hidden z-50 w-[600px]"
+                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-xl overflow-hidden z-50"
                           style={{ 
-                            transform: 'translateX(calc(-100% + 100px))',
-                            left: 'auto'
+                            width: '700px',
+                            height: '400px'
                           }}
                           onMouseLeave={() => setActiveDropdown(null)}
                         >
-                          <div className="p-4">
+                          <div className="p-6 h-full overflow-y-auto">
+                            {/* Main Section Header */}
                             <Link
                               to={item.href}
-                              className="block mb-4 p-3 rounded-lg hover:bg-muted/50 transition-colors border-b border-border/30"
+                              className="block mb-4 p-4 rounded-lg hover:bg-muted/50 transition-colors border-b border-border/30"
                               onClick={() => setActiveDropdown(null)}
                             >
-                              <h3 className="font-bold text-lg text-foreground hover:text-primary transition-colors">
+                              <h3 className="font-bold text-lg text-foreground hover:text-primary transition-colors mb-2">
                                 {item.name}
                               </h3>
-                              <p className="text-muted-foreground mt-1 text-sm">
+                              <p className="text-muted-foreground text-sm">
                                 {item.name === 'Growth Solutions' 
                                   ? 'High-performance marketing strategy and execution'
                                   : 'Technology-enhanced operational scaling solutions'
                                 }
                               </p>
                             </Link>
-                            <div className="flex gap-4">
+                            
+                            {/* Sections Grid */}
+                            <div className="flex gap-6">
                               {item.sections?.map((section) => (
                                 <div key={section.title} className="flex-1 space-y-2">
                                   <Link
                                     to={section.href}
-                                    className="block font-bold text-sm text-foreground hover:text-primary transition-colors py-1 border-b border-border/20"
+                                    className="block font-bold text-sm text-foreground hover:text-primary transition-colors py-2 border-b border-border/20"
                                     onClick={() => setActiveDropdown(null)}
                                   >
                                     {section.title}
@@ -205,7 +215,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                                       <Link
                                         key={subItem.name}
                                         to={subItem.href}
-                                        className="block text-xs text-foreground/70 hover:text-primary transition-colors py-1 px-2 rounded-md hover:bg-muted/30"
+                                        className="block text-xs text-foreground/70 hover:text-primary transition-colors py-1 px-2 rounded hover:bg-muted/30"
                                         onClick={() => setActiveDropdown(null)}
                                       >
                                         {subItem.name}
@@ -362,4 +372,4 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   );
 };
 
-export default Header; 
+export default Header;

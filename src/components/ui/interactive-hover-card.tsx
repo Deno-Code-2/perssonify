@@ -20,7 +20,7 @@ const InteractiveHoverCard: React.FC<InteractiveHoverCardProps> = ({
   return (
     <div
       className={cn(
-        'group flex flex-row items-center gap-6 p-5 rounded-xl border border-foreground/10 bg-background transition-colors hover:border-primary/80 w-full max-w-lg h-44',
+        'group flex flex-col md:flex-row items-center gap-6 p-5 rounded-xl border border-foreground/10 bg-background transition-colors hover:border-primary/80 w-full max-w-lg h-auto md:h-44',
         className
       )}
     >
@@ -45,11 +45,6 @@ const InteractiveHoverCard: React.FC<InteractiveHoverCardProps> = ({
             {/* Base text, always visible underneath */}
             <span className="text-foreground">{heading}</span>
             {/* Wipe container with top text layer */}
-            <div className="absolute top-0 left-0 h-full w-full bg-primary origin-left transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100 overflow-hidden">
-              <span className="absolute top-0 left-0 py-1 px-px text-primary-foreground whitespace-nowrap">
-                {heading}
-              </span>
-            </div>
           </div>
         </div>
         <p className="text-sm text-foreground/70 select-none leading-snug">
