@@ -1,4 +1,3 @@
-
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -7,8 +6,8 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Clock, Users, Target, Star } from 'lucide-react'
-import WorldMap from '@/components/ui/world-map'
+import { Mail, Phone, MapPin, Clock, Users, Target, Star, ArrowRight, Zap, Shield, Award } from 'lucide-react'
+import { WorldMap } from '@/components/ui/world-map'
 
 export default function ContactSection() {
     const contactInfo = [
