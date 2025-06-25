@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Cog, Settings, Database, Shield, ArrowRight, Zap, CheckCircle } from 'lucide-react';
@@ -58,8 +59,8 @@ const StrategicSolutions: React.FC = () => {
 
   return (
     <div className="bg-background text-foreground">
-      {/* Hero Section - Moved up with less padding */}
-      <WavyBackground className="py-12 md:py-16 mt-20">
+      {/* Hero Section */}
+      <WavyBackground className="py-8 md:py-12 mt-16 md:mt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

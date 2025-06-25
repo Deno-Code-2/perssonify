@@ -50,8 +50,8 @@ const GrowthSolutions: React.FC = () => {
 
   return <div className="bg-background text-foreground">
       
-      {/* Hero Section - Moved up with less top padding */}
-      <WavyBackground className="py-12 md:py-16 mt-4 md:mt-8">
+      {/* Hero Section */}
+      <WavyBackground className="py-8 md:py-12 mt-16 md:mt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <motion.div initial={{
           opacity: 0,

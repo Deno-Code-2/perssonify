@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import InteractiveHoverCard from '../ui/interactive-hover-card';
+import TextRotate from '../ui/text-rotate';
 
 const Hero: React.FC = () => {
   return (
@@ -30,21 +31,11 @@ const Hero: React.FC = () => {
           >
             We bring{' '}
             <span className="text-primary relative inline-block">
-              Growth
+              <TextRotate words={["Growth", "Scale"]} duration={3000} className="text-primary" />
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
-                className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-2 sm:h-3 bg-primary/20 dark:bg-primary/30 -z-10"
-              />
-            </span>
-            {' '}and{' '}
-            <span className="text-primary relative inline-block">
-              Scale
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
                 className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-2 sm:h-3 bg-primary/20 dark:bg-primary/30 -z-10"
               />
             </span>
