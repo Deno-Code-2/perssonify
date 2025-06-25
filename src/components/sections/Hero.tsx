@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
           >
             We bring{' '}
             <span className="text-primary relative inline-block">
-              <TextRotate words={["Growth", "Scale"]} duration={3000} className="text-primary" />
+              <TextRotate words={["Growth", "Scale", "Power"]} duration={3000} className="text-primary" />
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
