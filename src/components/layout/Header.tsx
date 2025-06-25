@@ -167,41 +167,45 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full left-0 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-xl shadow-xl overflow-hidden z-50 w-[800px]"
+                          className="absolute top-full right-0 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-xl overflow-hidden z-50 w-[600px]"
+                          style={{ 
+                            transform: 'translateX(calc(-100% + 100px))',
+                            left: 'auto'
+                          }}
                           onMouseLeave={() => setActiveDropdown(null)}
                         >
-                          <div className="p-8">
+                          <div className="p-4">
                             <Link
                               to={item.href}
-                              className="block mb-6 p-4 rounded-lg hover:bg-muted/50 transition-colors border-b border-border/30"
+                              className="block mb-4 p-3 rounded-lg hover:bg-muted/50 transition-colors border-b border-border/30"
                               onClick={() => setActiveDropdown(null)}
                             >
-                              <h3 className="font-bold text-2xl text-foreground hover:text-primary transition-colors">
+                              <h3 className="font-bold text-lg text-foreground hover:text-primary transition-colors">
                                 {item.name}
                               </h3>
-                              <p className="text-muted-foreground mt-2">
+                              <p className="text-muted-foreground mt-1 text-sm">
                                 {item.name === 'Growth Solutions' 
                                   ? 'High-performance marketing strategy and execution'
                                   : 'Technology-enhanced operational scaling solutions'
                                 }
                               </p>
                             </Link>
-                            <div className="flex gap-8">
+                            <div className="flex gap-4">
                               {item.sections?.map((section) => (
-                                <div key={section.title} className="flex-1 space-y-4">
+                                <div key={section.title} className="flex-1 space-y-2">
                                   <Link
                                     to={section.href}
-                                    className="block font-bold text-lg text-foreground hover:text-primary transition-colors py-2 border-b border-border/20"
+                                    className="block font-bold text-sm text-foreground hover:text-primary transition-colors py-1 border-b border-border/20"
                                     onClick={() => setActiveDropdown(null)}
                                   >
                                     {section.title}
                                   </Link>
-                                  <div className="space-y-2">
+                                  <div className="space-y-1">
                                     {section.items?.map((subItem) => (
                                       <Link
                                         key={subItem.name}
                                         to={subItem.href}
-                                        className="block text-sm text-foreground/70 hover:text-primary transition-colors py-2 px-3 rounded-md hover:bg-muted/30"
+                                        className="block text-xs text-foreground/70 hover:text-primary transition-colors py-1 px-2 rounded-md hover:bg-muted/30"
                                         onClick={() => setActiveDropdown(null)}
                                       >
                                         {subItem.name}
@@ -358,4 +362,4 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   );
 };
 
-export default Header;
+export default Header; 
