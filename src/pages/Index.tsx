@@ -11,8 +11,8 @@ const Index: React.FC = () => {
     <div>
       <SocialMeta />
       <Hero />
-      <AboutSection />
       <TimelineSection />
+      <AboutSection />
       <ContactSection />
       <CookieConsent />
     </div>
