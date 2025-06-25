@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TrendingUp, Users, Mail, Palette, Target, Search, Globe, ArrowRight, Zap, CheckCircle, Star } from 'lucide-react';
@@ -7,6 +8,7 @@ import { WavyBackground } from '@/components/ui/wavy-background';
 import StartGrowingForm from '@/components/forms/StartGrowingForm';
 import { motion } from 'framer-motion';
 import ThemeBreadcrumb from '@/components/ui/theme-breadcrumb';
+
 const GrowthSolutions: React.FC = () => {
   const coreServices = [{
     icon: TrendingUp,
@@ -44,14 +46,16 @@ const GrowthSolutions: React.FC = () => {
     description: 'Seamless, scalable, conversion-ready. Professional websites built for performance, user experience, and business growth.',
     link: '/growth-solutions/website-solutions'
   }];
+
   const benefits = ['Measurable ROI on every campaign', 'Data-driven decision making', 'Scalable growth strategies', 'Multi-channel integration', 'Continuous optimization', 'Transparent reporting'];
+
   return <div className="bg-background text-foreground">
       <div className="container pt-20">
         <ThemeBreadcrumb />
       </div>
       
-      {/* Hero Section */}
-      <WavyBackground className="py-16 md:py-24 mt-8 md:mt-16">
+      {/* Hero Section - Moved up with less top padding */}
+      <WavyBackground className="py-12 md:py-16 mt-4 md:mt-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <motion.div initial={{
           opacity: 0,
@@ -78,25 +82,6 @@ const GrowthSolutions: React.FC = () => {
           </motion.div>
         </div>
       </WavyBackground>
-
-      {/* Core Growth Solutions CTA */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 to-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <motion.div initial={{
-          opacity: 0,
-          y: 30
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8
-        }} className="text-center">
-            <Card className="border-0 shadow-2xl bg-gradient-to-br from-primary/10 to-primary/5">
-              
-            </Card>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Core Services */}
       <section className="py-24 bg-background">
@@ -246,4 +231,5 @@ const GrowthSolutions: React.FC = () => {
       </section>
     </div>;
 };
+
 export default GrowthSolutions;

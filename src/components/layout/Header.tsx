@@ -1,4 +1,5 @@
 
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -24,57 +25,28 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     { name: 'About', href: '/about' },
     { name: 'Insights', href: '/insights' },
     { 
-      name: 'Solutions', 
-      href: '#',
+      name: 'Growth Solutions', 
+      href: '/growth-solutions',
       hasDropdown: true,
-      sections: [
-        {
-          title: 'Growth Solutions',
-          href: '/growth-solutions',
-          description: 'High-performance marketing strategy and execution',
-          items: [
-            { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
-            { name: 'Social Media Marketing', href: '/growth-solutions/social-media-marketing' },
-            { name: 'Email Marketing & Automation', href: '/growth-solutions/email-marketing' },
-            { name: 'Creative Solutions', href: '/growth-solutions/creative-solutions' },
-            { name: 'Conversion Rate Optimization', href: '/growth-solutions/conversion-optimization' },
-            { name: 'SEO & Website Growth', href: '/growth-solutions/seo-website-growth' },
-            { name: 'Website Solutions', href: '/growth-solutions/website-solutions' },
-          ]
-        },
-        {
-          title: 'Core Growth Solutions',
-          href: '/core-growth-solutions',
-          description: 'Comprehensive digital growth solutions for brands that demand impact',
-          items: [
-            { name: 'Brand Positioning & Strategy', href: '/core-growth-solutions/brand-positioning' },
-            { name: 'Lead Generation Systems', href: '/core-growth-solutions/lead-generation' },
-            { name: 'Revenue Optimization', href: '/core-growth-solutions/revenue-optimization' },
-            { name: 'Growth Analytics & Insights', href: '/core-growth-solutions/analytics' },
-          ]
-        },
-        {
-          title: 'Strategic Solutions',
-          href: '/strategic-solutions',
-          description: 'Tailored strategy and implementations for operational efficiency',
-          items: [
-            { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
-            { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems' },
-            { name: 'Custom Solution Engineering', href: '/strategic-solutions/custom-engineering' },
-            { name: 'Enterprise Transformation', href: '/strategic-solutions/enterprise-transformation' },
-          ]
-        },
-        {
-          title: 'Specialized Solutions',
-          href: '/specialized-growth-solutions',
-          description: 'Expert-level solutions for specific business challenges',
-          items: [
-            { name: 'Deep Dive Audit & Insights', href: '/specialized-growth-solutions/audit-insights' },
-            { name: 'Analytics & Event Tracking', href: '/specialized-growth-solutions/analytics-tracking' },
-            { name: 'AI-Accelerated Content', href: '/specialized-growth-solutions/ai-content' },
-            { name: 'Executive Personal Branding', href: '/specialized-growth-solutions/executive-branding' },
-          ]
-        }
+      items: [
+        { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
+        { name: 'Social Media Marketing', href: '/growth-solutions/social-media-marketing' },
+        { name: 'Email Marketing & Automation', href: '/growth-solutions/email-marketing' },
+        { name: 'Creative Solutions', href: '/growth-solutions/creative-solutions' },
+        { name: 'Conversion Rate Optimization', href: '/growth-solutions/conversion-optimization' },
+        { name: 'SEO & Website Growth', href: '/growth-solutions/seo-website-growth' },
+        { name: 'Website Solutions', href: '/growth-solutions/website-solutions' },
+      ]
+    },
+    { 
+      name: 'Strategic Solutions', 
+      href: '/strategic-solutions',
+      hasDropdown: true,
+      items: [
+        { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
+        { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems' },
+        { name: 'Custom Solution Engineering', href: '/strategic-solutions/custom-engineering' },
+        { name: 'Enterprise Transformation', href: '/strategic-solutions/enterprise-transformation' },
       ]
     },
     { name: 'Blog', href: '/blog' },
@@ -117,7 +89,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
             <img
               src={LogoTeal}
               alt="Perssonify Logo"
-              className="h-8 w-auto object-contain min-h-[32px] min-w-[120px]"
+              className="h-8 w-auto object-contain"
               style={{ minHeight: '32px', minWidth: '120px' }}
             />
           </button>
@@ -149,38 +121,31 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-xl shadow-xl overflow-hidden z-50 min-w-[800px]"
+                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-xl shadow-xl overflow-hidden z-50 min-w-[300px]"
                           onMouseLeave={() => setActiveDropdown(null)}
                         >
-                          <div className="grid grid-cols-2 gap-1 p-4">
-                            {item.sections?.map((section, sectionIndex) => (
-                              <div key={section.title} className="p-3 rounded-lg hover:bg-muted/50 transition-colors">
+                          <div className="p-3">
+                            <Link
+                              to={item.href}
+                              className="block mb-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              <h3 className="font-semibold text-foreground hover:text-primary transition-colors">
+                                {item.name}
+                              </h3>
+                            </Link>
+                            <div className="space-y-1">
+                              {item.items?.map((subItem) => (
                                 <Link
-                                  to={section.href}
-                                  className="block mb-2"
+                                  key={subItem.name}
+                                  to={subItem.href}
+                                  className="block text-sm text-foreground/70 hover:text-primary transition-colors py-2 px-3 rounded-md hover:bg-muted/30"
                                   onClick={() => setActiveDropdown(null)}
                                 >
-                                  <h3 className="font-semibold text-foreground hover:text-primary transition-colors mb-1">
-                                    {section.title}
-                                  </h3>
-                                  <p className="text-xs text-muted-foreground mb-3">
-                                    {section.description}
-                                  </p>
+                                  {subItem.name}
                                 </Link>
-                                <div className="space-y-1">
-                                  {section.items.slice(0, 4).map((subItem) => (
-                                    <Link
-                                      key={subItem.name}
-                                      to={subItem.href}
-                                      className="block text-xs text-foreground/70 hover:text-primary transition-colors py-1"
-                                      onClick={() => setActiveDropdown(null)}
-                                    >
-                                      {subItem.name}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
                           </div>
                         </motion.div>
                       )}
@@ -238,15 +203,22 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                   <div key={item.name}>
                     {item.hasDropdown ? (
                       <div>
+                        <Link
+                          to={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block px-4 py-2 text-sm font-medium transition-colors hover:text-primary text-foreground/80"
+                        >
+                          {item.name}
+                        </Link>
                         <button
                           onClick={() =>
                             setActiveDropdown(
                               activeDropdown === `mobile-${item.name}` ? null : `mobile-${item.name}`
                             )
                           }
-                          className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium transition-colors hover:text-primary text-foreground/80"
+                          className="flex items-center justify-between w-full px-6 py-1 text-xs font-medium transition-colors hover:text-primary text-foreground/60"
                         >
-                          <span>{item.name}</span>
+                          <span>View All {item.name}</span>
                           <ChevronDown 
                             className={`w-3 h-3 transition-transform duration-200 ${
                               activeDropdown === `mobile-${item.name}` ? 'rotate-180' : ''
@@ -263,32 +235,18 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                               transition={{ duration: 0.2 }}
                               className="bg-muted/30"
                             >
-                              {item.sections?.map((section) => (
-                                <div key={section.title}>
-                                  <Link
-                                    to={section.href}
-                                    onClick={() => {
-                                      setIsMenuOpen(false);
-                                      setActiveDropdown(null);
-                                    }}
-                                    className="block px-6 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
-                                  >
-                                    {section.title}
-                                  </Link>
-                                  {section.items.slice(0, 2).map((dropdownItem) => (
-                                    <Link
-                                      key={dropdownItem.name}
-                                      to={dropdownItem.href}
-                                      onClick={() => {
-                                        setIsMenuOpen(false);
-                                        setActiveDropdown(null);
-                                      }}
-                                      className="block px-8 py-1 text-xs text-foreground/70 hover:text-primary transition-colors"
-                                    >
-                                      {dropdownItem.name}
-                                    </Link>
-                                  ))}
-                                </div>
+                              {item.items?.map((dropdownItem) => (
+                                <Link
+                                  key={dropdownItem.name}
+                                  to={dropdownItem.href}
+                                  onClick={() => {
+                                    setIsMenuOpen(false);
+                                    setActiveDropdown(null);
+                                  }}
+                                  className="block px-8 py-1 text-xs text-foreground/70 hover:text-primary transition-colors"
+                                >
+                                  {dropdownItem.name}
+                                </Link>
                               ))}
                             </motion.div>
                           )}
@@ -322,3 +280,4 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 };
 
 export default Header;
+
