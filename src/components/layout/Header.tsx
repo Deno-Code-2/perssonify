@@ -1,5 +1,4 @@
 
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -28,25 +27,61 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       name: 'Growth Solutions', 
       href: '/growth-solutions',
       hasDropdown: true,
-      items: [
-        { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
-        { name: 'Social Media Marketing', href: '/growth-solutions/social-media-marketing' },
-        { name: 'Email Marketing & Automation', href: '/growth-solutions/email-marketing' },
-        { name: 'Creative Solutions', href: '/growth-solutions/creative-solutions' },
-        { name: 'Conversion Rate Optimization', href: '/growth-solutions/conversion-optimization' },
-        { name: 'SEO & Website Growth', href: '/growth-solutions/seo-website-growth' },
-        { name: 'Website Solutions', href: '/growth-solutions/website-solutions' },
+      sections: [
+        {
+          title: 'Core Growth Solutions',
+          href: '/core-growth-solutions',
+          items: [
+            { name: 'Performance Marketing & Paid Media', href: '/growth-solutions/performance-marketing' },
+            { name: 'Social Media Marketing & Brand Engagement', href: '/growth-solutions/social-media-marketing' },
+            { name: 'Email Marketing & Marketing Automation', href: '/growth-solutions/email-marketing' },
+            { name: 'Creative Solutions', href: '/growth-solutions/creative-solutions' },
+            { name: 'Conversion Rate Optimization (CRO)', href: '/growth-solutions/conversion-optimization' },
+            { name: 'Search Engine Optimization (SEO) & Website Growth', href: '/growth-solutions/seo-website-growth' },
+            { name: 'Website Solutions', href: '/growth-solutions/website-solutions' },
+          ]
+        },
+        {
+          title: 'Specialized Growth Solutions',
+          href: '/specialized-growth-solutions',
+          items: [
+            { name: 'Deep Dive Audit & Strategic Insights', href: '/specialized-growth-solutions/audit-insights' },
+            { name: 'Analytics and Event Tracking Setup', href: '/specialized-growth-solutions/analytics-tracking' },
+            { name: 'Lead Generation & Funnel Strategy', href: '/specialized-growth-solutions/lead-generation' },
+            { name: 'Brand Architecture & Strategy', href: '/specialized-growth-solutions/brand-strategy' },
+            { name: 'Content Strategy & Planning', href: '/specialized-growth-solutions/content-strategy' },
+            { name: 'AI-Accelerated Content Production Pipelines', href: '/specialized-growth-solutions/ai-content' },
+            { name: 'Executive Personal Branding & LinkedIn Marketing', href: '/specialized-growth-solutions/executive-branding' },
+          ]
+        }
       ]
     },
     { 
       name: 'Strategic Solutions', 
       href: '/strategic-solutions',
       hasDropdown: true,
-      items: [
-        { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
-        { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems' },
-        { name: 'Custom Solution Engineering', href: '/strategic-solutions/custom-engineering' },
-        { name: 'Enterprise Transformation', href: '/strategic-solutions/enterprise-transformation' },
+      sections: [
+        {
+          title: 'Core Strategic Solutions',
+          href: '/strategic-solutions/core',
+          items: [
+            { name: 'Process & Workflow Automation', href: '/strategic-solutions/process-automation' },
+            { name: 'Digital Systems Enablement', href: '/strategic-solutions/digital-systems' },
+            { name: 'Custom Solution Engineering', href: '/strategic-solutions/custom-engineering' },
+            { name: 'Enterprise Evolution & Strategic Transformation', href: '/strategic-solutions/enterprise-transformation' },
+          ]
+        },
+        {
+          title: 'Solutions By Function',
+          href: '/strategic-solutions/by-function',
+          items: [
+            { name: 'Finance', href: '/strategic-solutions/finance' },
+            { name: 'Human Resources', href: '/strategic-solutions/human-resources' },
+            { name: 'Operations', href: '/strategic-solutions/operations' },
+            { name: 'Compliance & Governance', href: '/strategic-solutions/compliance' },
+            { name: 'Cross-Functional Leadership', href: '/strategic-solutions/cross-functional' },
+          ]
+        }
       ]
     },
     { name: 'Blog', href: '/blog' },
@@ -121,29 +156,42 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-xl shadow-xl overflow-hidden z-50 min-w-[300px]"
+                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background/95 backdrop-blur-sm border border-border rounded-xl shadow-xl overflow-hidden z-50 min-w-[600px]"
                           onMouseLeave={() => setActiveDropdown(null)}
                         >
-                          <div className="p-3">
+                          <div className="p-6">
                             <Link
                               to={item.href}
-                              className="block mb-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                              className="block mb-4 p-3 rounded-lg hover:bg-muted/50 transition-colors"
                               onClick={() => setActiveDropdown(null)}
                             >
-                              <h3 className="font-semibold text-foreground hover:text-primary transition-colors">
+                              <h3 className="font-semibold text-lg text-foreground hover:text-primary transition-colors">
                                 {item.name}
                               </h3>
                             </Link>
-                            <div className="space-y-1">
-                              {item.items?.map((subItem) => (
-                                <Link
-                                  key={subItem.name}
-                                  to={subItem.href}
-                                  className="block text-sm text-foreground/70 hover:text-primary transition-colors py-2 px-3 rounded-md hover:bg-muted/30"
-                                  onClick={() => setActiveDropdown(null)}
-                                >
-                                  {subItem.name}
-                                </Link>
+                            <div className="grid grid-cols-2 gap-6">
+                              {item.sections?.map((section) => (
+                                <div key={section.title} className="space-y-3">
+                                  <Link
+                                    to={section.href}
+                                    className="block font-semibold text-foreground hover:text-primary transition-colors py-2 border-b border-border/30"
+                                    onClick={() => setActiveDropdown(null)}
+                                  >
+                                    {section.title}
+                                  </Link>
+                                  <div className="space-y-2">
+                                    {section.items?.map((subItem) => (
+                                      <Link
+                                        key={subItem.name}
+                                        to={subItem.href}
+                                        className="block text-sm text-foreground/70 hover:text-primary transition-colors py-1 px-2 rounded-md hover:bg-muted/30"
+                                        onClick={() => setActiveDropdown(null)}
+                                      >
+                                        {subItem.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
                               ))}
                             </div>
                           </div>
@@ -235,18 +283,32 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                               transition={{ duration: 0.2 }}
                               className="bg-muted/30"
                             >
-                              {item.items?.map((dropdownItem) => (
-                                <Link
-                                  key={dropdownItem.name}
-                                  to={dropdownItem.href}
-                                  onClick={() => {
-                                    setIsMenuOpen(false);
-                                    setActiveDropdown(null);
-                                  }}
-                                  className="block px-8 py-1 text-xs text-foreground/70 hover:text-primary transition-colors"
-                                >
-                                  {dropdownItem.name}
-                                </Link>
+                              {item.sections?.map((section) => (
+                                <div key={section.title} className="px-8 py-2">
+                                  <Link
+                                    to={section.href}
+                                    onClick={() => {
+                                      setIsMenuOpen(false);
+                                      setActiveDropdown(null);
+                                    }}
+                                    className="block text-xs font-semibold text-foreground hover:text-primary transition-colors py-1"
+                                  >
+                                    {section.title}
+                                  </Link>
+                                  {section.items?.map((subItem) => (
+                                    <Link
+                                      key={subItem.name}
+                                      to={subItem.href}
+                                      onClick={() => {
+                                        setIsMenuOpen(false);
+                                        setActiveDropdown(null);
+                                      }}
+                                      className="block px-4 py-1 text-xs text-foreground/70 hover:text-primary transition-colors"
+                                    >
+                                      {subItem.name}
+                                    </Link>
+                                  ))}
+                                </div>
                               ))}
                             </motion.div>
                           )}
@@ -280,4 +342,3 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
 };
 
 export default Header;
-

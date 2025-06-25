@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { WavyBackground } from '@/components/ui/wavy-background';
 import StartGrowingForm from '@/components/forms/StartGrowingForm';
 import { motion } from 'framer-motion';
-import ThemeBreadcrumb from '@/components/ui/theme-breadcrumb';
 
 const StrategicSolutions: React.FC = () => {
   const coreServices = [
@@ -59,12 +58,8 @@ const StrategicSolutions: React.FC = () => {
 
   return (
     <div className="bg-background text-foreground">
-      <div className="container pt-20">
-        <ThemeBreadcrumb />
-      </div>
-
       {/* Hero Section - Moved up with less padding */}
-      <WavyBackground className="py-12 md:py-16 mt-4 md:mt-8">
+      <WavyBackground className="py-12 md:py-16 mt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
