@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { WavyBackground } from '@/components/ui/wavy-background';
 import StartGrowingForm from '@/components/forms/StartGrowingForm';
 import { motion } from 'framer-motion';
-import ThemeBreadcrumb from '@/components/ui/theme-breadcrumb';
 
 const GrowthSolutions: React.FC = () => {
   const coreServices = [{
@@ -50,9 +49,6 @@ const GrowthSolutions: React.FC = () => {
   const benefits = ['Measurable ROI on every campaign', 'Data-driven decision making', 'Scalable growth strategies', 'Multi-channel integration', 'Continuous optimization', 'Transparent reporting'];
 
   return <div className="bg-background text-foreground">
-      <div className="container pt-20">
-        <ThemeBreadcrumb />
-      </div>
       
       {/* Hero Section - Moved up with less top padding */}
       <WavyBackground className="py-12 md:py-16 mt-4 md:mt-8">
