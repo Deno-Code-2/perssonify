@@ -29,6 +29,11 @@ import CookieConsent from './components/CookieConsent';
 import SocialMeta from './components/SocialMeta';
 import EmailMarketing from './pages/growth-solutions/EmailMarketing';
 import AuditInsights from './pages/specialized-growth-solutions/AuditInsights';
+import LeadGeneration from './pages/specialized-growth-solutions/LeadGeneration';
+import BrandStrategy from './pages/specialized-growth-solutions/BrandStrategy';
+import ContentStrategy from './pages/specialized-growth-solutions/ContentStrategy';
+import AIContent from './pages/specialized-growth-solutions/AIContent';
+import ExecutiveBranding from './pages/specialized-growth-solutions/ExecutiveBranding';
 
 function App() {
   return (
@@ -65,6 +70,11 @@ function App() {
             {/* Specialized Growth Solutions Routes */}
             <Route path="specialized-growth-solutions/analytics-tracking" element={<AnalyticsTracking />} />
             <Route path="specialized-growth-solutions/audit-insights" element={<AuditInsights />} />
+            <Route path="specialized-growth-solutions/lead-generation" element={<LeadGeneration />} />
+            <Route path="specialized-growth-solutions/brand-strategy" element={<BrandStrategy />} />
+            <Route path="specialized-growth-solutions/content-strategy" element={<ContentStrategy />} />
+            <Route path="specialized-growth-solutions/ai-content" element={<AIContent />} />
+            <Route path="specialized-growth-solutions/executive-branding" element={<ExecutiveBranding />} />
             
             {/* Strategic Solutions Routes */}
             <Route path="strategic-solutions/process-automation" element={<ProcessAutomation />} />

@@ -70,7 +70,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, toggleDarkMode }) => {
       { name: 'Deep Dive Audit & Strategic Insights', href: '/specialized-growth-solutions/audit-insights' },
       { name: 'Analytics and Event Tracking Setup', href: '/specialized-growth-solutions/analytics-tracking' },
       { name: 'Lead Generation & Funnel Strategy', href: '/specialized-growth-solutions/lead-generation' },
-      { name: 'Brand Architecture & Strategy', href: '/specialized-growth-solutions/brand-architecture' },
+      { name: 'Brand Architecture & Strategy', href: '/specialized-growth-solutions/brand-strategy' },
       { name: 'Content Strategy & Planning', href: '/specialized-growth-solutions/content-strategy' },
       { name: 'AI-Accelerated Content Production', href: '/specialized-growth-solutions/ai-content' },
       { name: 'Executive Personal Branding', href: '/specialized-growth-solutions/executive-branding' },
