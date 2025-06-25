@@ -70,16 +70,35 @@
   }
 }
 
-/* Enhanced Layout and Spacing for 4K */
+/* Enhanced Layout and Spacing - Mobile First */
 .page-content {
-  padding-top: 80px;
-  min-height: calc(100vh - 80px);
+  padding-top: 60px;
+  min-height: calc(100vh - 60px);
 }
 
-/* Container improvements for better 4K scaling */
+@media (min-width: 640px) {
+  .page-content {
+    padding-top: 70px;
+    min-height: calc(100vh - 70px);
+  }
+}
+
+/* Container improvements with better mobile spacing */
 .container {
-  @apply mx-auto px-4 sm:px-6 lg:px-8;
-  max-width: min(1400px, 90vw);
+  @apply mx-auto px-3 sm:px-4 lg:px-6 xl:px-8;
+  max-width: min(1400px, 95vw);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: min(1400px, 92vw);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: min(1400px, 90vw);
+  }
 }
 
 @media (min-width: 2560px) {
@@ -92,6 +111,14 @@
   .container {
     max-width: min(2000px, 80vw);
   }
+}
+
+/* Mobile-optimized typography */
+@media (max-width: 639px) {
+  .text-4xl { font-size: 1.875rem; line-height: 2.25rem; }
+  .text-5xl { font-size: 2.25rem; line-height: 2.5rem; }
+  .text-6xl { font-size: 2.5rem; line-height: 2.75rem; }
+  .text-7xl { font-size: 3rem; line-height: 3.5rem; }
 }
 
 /* Typography scaling for larger screens */
@@ -109,6 +136,17 @@
   .text-7xl { font-size: 6.5rem; }
 }
 
+/* Mobile-optimized spacing */
+@media (max-width: 639px) {
+  .py-16 { padding-top: 3rem; padding-bottom: 3rem; }
+  .py-20 { padding-top: 4rem; padding-bottom: 4rem; }
+  .py-24 { padding-top: 5rem; padding-bottom: 5rem; }
+  .gap-8 { gap: 1.5rem; }
+  .gap-12 { gap: 2rem; }
+  .mb-12 { margin-bottom: 2rem; }
+  .mb-16 { margin-bottom: 3rem; }
+}
+
 /* Enhanced spacing for larger screens */
 @media (min-width: 2560px) {
   .py-24 { padding-top: 8rem; padding-bottom: 8rem; }
@@ -119,6 +157,11 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* Focus styles */
@@ -191,4 +234,30 @@ input:focus, textarea:focus {
 
 .animate-fade-in-right {
   animation: fadeInRight 0.8s ease-out forwards;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 767px) {
+  /* Remove excessive margins and padding on mobile */
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Ensure content doesn't overflow */
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Fix grid layouts on mobile */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Better mobile text sizing */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    hyphens: auto;
+  }
 }
