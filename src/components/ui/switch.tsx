@@ -1,3 +1,4 @@
+
 import { twMerge } from "tailwind-merge";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
@@ -159,97 +160,42 @@ export const Switch = ({
                 transition={{ duration: 0.5 }}
               />
               
-              {/* Icon Container with 3D Transform */}
-              <motion.div
-                className="absolute inset-0 flex items-center justify-center"
-                animate={{
-                  rotateY: checked ? 0 : 180,
-                }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-                style={{
-                  transformStyle: "preserve-3d",
-                }}
-              >
-                <AnimatePresence mode="wait" initial={false}>
+              {/* Icon Container with Fixed Positioning */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <AnimatePresence mode="wait">
                   {checked ? (
                     <motion.div
-                      key="moon-container"
-                      initial={{ opacity: 0, scale: 0.3, rotateX: -90 }}
+                      key="moon"
+                      initial={{ opacity: 0, scale: 0.5, rotateX: -90 }}
                       animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-                      exit={{ opacity: 0, scale: 0.3, rotateX: 90 }}
-                      transition={{ 
-                        duration: 0.4,
-                        ease: "easeOut"
-                      }}
-                      className="relative"
+                      exit={{ opacity: 0, scale: 0.5, rotateX: 90 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="absolute inset-0 flex items-center justify-center"
                     >
-                      {/* Icon Glow Effect */}
-                      <motion.div
-                        className="absolute inset-0 flex items-center justify-center"
-                        animate={{
-                          scale: [1, 1.3, 1],
-                          opacity: [0.3, 0.7, 0.3],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      >
-                        <Moon className="w-4 h-4 text-primary/60" strokeWidth={1} />
-                      </motion.div>
-                      
-                      {/* Main Icon */}
                       <Moon 
-                        className="w-4 h-4 text-primary relative z-10" 
+                        className="w-4 h-4 text-primary" 
                         strokeWidth={2} 
                         fill="currentColor"
                       />
                     </motion.div>
                   ) : (
                     <motion.div
-                      key="sun-container"
-                      initial={{ opacity: 0, scale: 0.3, rotateX: -90 }}
+                      key="sun"
+                      initial={{ opacity: 0, scale: 0.5, rotateX: -90 }}
                       animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-                      exit={{ opacity: 0, scale: 0.3, rotateX: 90 }}
-                      transition={{ 
-                        duration: 0.4,
-                        ease: "easeOut"
-                      }}
-                      className="relative"
+                      exit={{ opacity: 0, scale: 0.5, rotateX: 90 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="absolute inset-0 flex items-center justify-center"
                     >
-                      {/* Icon Glow Effect */}
-                      <motion.div
-                        className="absolute inset-0 flex items-center justify-center"
-                        animate={{
-                          scale: [1, 1.3, 1],
-                          opacity: [0.3, 0.7, 0.3],
-                          rotate: [0, 360],
-                        }}
-                        transition={{
-                          scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-                          opacity: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-                          rotate: { duration: 4, repeat: Infinity, ease: "linear" }
-                        }}
-                      >
-                        <Sun className="w-4 h-4 text-primary/60" strokeWidth={1} />
-                      </motion.div>
-                      
-                      {/* Main Icon */}
-                      <motion.div
-                        animate={{ rotate: [0, 360] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                      >
-                        <Sun 
-                          className="w-4 h-4 text-primary relative z-10" 
-                          strokeWidth={2} 
-                          fill="currentColor"
-                        />
-                      </motion.div>
+                      <Sun 
+                        className="w-4 h-4 text-primary" 
+                        strokeWidth={2} 
+                        fill="currentColor"
+                      />
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
               
               {/* Reflection Layer */}
               <div className="absolute inset-x-[2px] top-[2px] h-3 rounded-t-[8px] bg-gradient-to-b from-white/60 to-transparent" />

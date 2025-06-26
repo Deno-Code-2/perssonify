@@ -4,24 +4,6 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import {
-  BarChart3,
-  Settings,
-  Funnel,
-  Building,
-  FileText,
-  Zap,
-  Linkedin,
-  Cog,
-  Database,
-  Wrench,
-  Briefcase,
-  DollarSign,
-  UserCheck,
-  Activity,
-  Shield,
-  Network,
-} from "lucide-react"
 
 export default function TimelineSection() {
   const [activeSection, setActiveSection] = useState("growth-solutions")
@@ -97,10 +79,10 @@ export default function TimelineSection() {
                   <button
                     onClick={() => scrollToSection(section.id)}
                     className={cn(
-                      "text-lg transition-colors pl-4 border-l-4 w-full text-left",
+                      "text-xl font-bold transition-colors pl-4 border-l-4 w-full text-left py-2",
                       activeSection === section.id
-                        ? "font-bold text-primary border-primary"
-                        : "text-muted-foreground hover:text-foreground border-transparent"
+                        ? "text-primary border-primary text-2xl"
+                        : "text-muted-foreground hover:text-foreground border-transparent text-xl"
                     )}
                   >
                     {section.title}
@@ -126,199 +108,137 @@ export default function TimelineSection() {
 
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Core Growth Solutions</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/performance-marketing" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/PerformanceMarketing&PaidMedia.png" alt="Performance Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Performance Marketing & Paid Media</h5>
-                      <p className="text-sm opacity-80">High-ROI ads that convert.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/social-media-marketing" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Social Media Marketing & Brand Engagement.png" alt="Social Media Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Social Media Marketing & Brand Engagement</h5>
-                      <p className="text-sm opacity-80">Build audience, spark action.</p>
-                    </div>
-                  </Link>
-                </Button>
-
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/email-marketing" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Email Marketing & Marketing Automation.png" alt="Email Marketing" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Email Marketing & Marketing Automation</h5>
-                      <p className="text-sm opacity-80">Automate nurture, drive loyalty.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/creative-solutions" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Creative Solutions.png" alt="Creative Solutions" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Creative Solutions</h5>
-                      <p className="text-sm opacity-80">Visuals that get results.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/conversion-optimization" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Conversion Rate Optimization.png" alt="Conversion Optimization" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Conversion Rate Optimization (CRO)</h5>
-                      <p className="text-sm opacity-80">Test. Refine. Convert more.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/seo-website-growth" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Search Engine Optimization (SEO) & Website Growth.png" alt="SEO & Website Growth" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Search Engine Optimization (SEO) & Website Growth</h5>
-                      <p className="text-sm opacity-80">Rank higher. Grow faster.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/growth-solutions/website-solutions" className="flex items-start gap-3">
-                    <img src="/Growth Solutions Icons/Website Solutions.png" alt="Website Solutions" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Website Solutions</h5>
-                      <p className="text-sm opacity-80">Seamless, scalable, conversion-ready.</p>
-                    </div>
-                  </Link>
-                </Button>
+                {[
+                  {
+                    link: "/growth-solutions/performance-marketing",
+                    icon: "/Growth Solutions Icons/PerformanceMarketing&PaidMedia.png",
+                    title: "Performance Marketing & Paid Media",
+                    desc: "High-ROI ads that convert."
+                  },
+                  {
+                    link: "/growth-solutions/social-media-marketing",
+                    icon: "/Growth Solutions Icons/Social Media Marketing & Brand Engagement.png",
+                    title: "Social Media Marketing & Brand Engagement",
+                    desc: "Build audience, spark action."
+                  },
+                  {
+                    link: "/growth-solutions/email-marketing",
+                    icon: "/Growth Solutions Icons/Email Marketing & Marketing Automation.png",
+                    title: "Email Marketing & Marketing Automation",
+                    desc: "Automate nurture, drive loyalty."
+                  },
+                  {
+                    link: "/growth-solutions/creative-solutions",
+                    icon: "/Growth Solutions Icons/Creative Solutions.png",
+                    title: "Creative Solutions",
+                    desc: "Visuals that get results."
+                  },
+                  {
+                    link: "/growth-solutions/conversion-optimization",
+                    icon: "/Growth Solutions Icons/Conversion Rate Optimization.png",
+                    title: "Conversion Rate Optimization (CRO)",
+                    desc: "Test. Refine. Convert more."
+                  },
+                  {
+                    link: "/growth-solutions/seo-website-growth",
+                    icon: "/Growth Solutions Icons/Search Engine Optimization (SEO) & Website Growth.png",
+                    title: "Search Engine Optimization (SEO) & Website Growth",
+                    desc: "Rank higher. Grow faster."
+                  },
+                  {
+                    link: "/growth-solutions/website-solutions",
+                    icon: "/Growth Solutions Icons/Website Solutions.png",
+                    title: "Website Solutions",
+                    desc: "Seamless, scalable, conversion-ready."
+                  }
+                ].map((item, index) => (
+                  <Button 
+                    key={index}
+                    variant="outline" 
+                    className="flex items-start gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors min-h-[80px]"
+                    asChild
+                  >
+                    <Link to={item.link} className="flex items-start gap-4 w-full">
+                      <img 
+                        src={item.icon} 
+                        alt={item.title} 
+                        className="w-8 h-8 mt-1 flex-shrink-0 dark:invert object-contain" 
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h5 className="font-semibold text-sm mb-1 line-clamp-2">{item.title}</h5>
+                        <p className="text-xs opacity-80 line-clamp-2">{item.desc}</p>
+                      </div>
+                    </Link>
+                  </Button>
+                ))}
               </div>
 
               
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Specialized Growth Solutions</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/audit-insights" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Deep Dive Audit & Strategic Insights.png" alt="Deep Dive Audit" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Deep Dive Audit & Strategic Insights</h5>
-                      <p className="text-sm opacity-80">Clarity through expert analysis.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/analytics-tracking" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Analytics and Event Tracking Setup.png" alt="Analytics Tracking" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Analytics and Event Tracking Setup</h5>
-                      <p className="text-sm opacity-80">Track what matters, measure what works.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/lead-generation" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Lead Generation & Funnel Strategy.png" alt="Lead Generation" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Lead Generation & Funnel Strategy</h5>
-                      <p className="text-sm opacity-80">Build funnels that convert.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/brand-architecture" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Brand Architecture & Strategy.png" alt="Brand Architecture" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Brand Architecture & Strategy</h5>
-                      <p className="text-sm opacity-80">Define, differentiate, scale.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/content-strategy" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Content Strategy & Planning.png" alt="Content Strategy" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Content Strategy & Marketing</h5>
-                      <p className="text-sm opacity-80">Create content that drives action.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/ai-content" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/AI-Accelerated Content Production Pipelines.png" alt="AI Content" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">AI-Accelerated Content Production Pipelines</h5>
-                      <p className="text-sm opacity-80">Scale content with AI precision.</p>
-                    </div>
-                  </Link>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/specialized-growth-solutions/executive-branding" className="flex items-start gap-3">
-                    <img src="/Specialized Growth Solutions Icons/Executive Personal Branding & LinkedIn Marketing.png" alt="Executive Branding" className="w-5 h-5 mt-1 flex-shrink-0 dark:invert" />
-                    <div className="flex-1">
-                      <h5 className="font-semibold">Executive Personal Branding & LinkedIn Marketing</h5>
-                      <p className="text-sm opacity-80">Elevate presence, grow influence.</p>
-                    </div>
-                  </Link>
-                </Button>
+                {[
+                  {
+                    link: "/specialized-growth-solutions/audit-insights",
+                    icon: "/Specialized Growth Solutions Icons/Deep Dive Audit & Strategic Insights.png",
+                    title: "Deep Dive Audit & Strategic Insights",
+                    desc: "Clarity through expert analysis."
+                  },
+                  {
+                    link: "/specialized-growth-solutions/analytics-tracking",
+                    icon: "/Specialized Growth Solutions Icons/Analytics and Event Tracking Setup.png",
+                    title: "Analytics and Event Tracking Setup",
+                    desc: "Track what matters, measure what works."
+                  },
+                  {
+                    link: "/specialized-growth-solutions/lead-generation",
+                    icon: "/Specialized Growth Solutions Icons/Lead Generation & Funnel Strategy.png",
+                    title: "Lead Generation & Funnel Strategy",
+                    desc: "Build funnels that convert."
+                  },
+                  {
+                    link: "/specialized-growth-solutions/brand-architecture",
+                    icon: "/Specialized Growth Solutions Icons/Brand Architecture & Strategy.png",
+                    title: "Brand Architecture & Strategy",
+                    desc: "Define, differentiate, scale."
+                  },
+                  {
+                    link: "/specialized-growth-solutions/content-strategy",
+                    icon: "/Specialized Growth Solutions Icons/Content Strategy & Planning.png",
+                    title: "Content Strategy & Marketing",
+                    desc: "Create content that drives action."
+                  },
+                  {
+                    link: "/specialized-growth-solutions/ai-content",
+                    icon: "/Specialized Growth Solutions Icons/AI-Accelerated Content Production Pipelines.png",
+                    title: "AI-Accelerated Content Production Pipelines",
+                    desc: "Scale content with AI precision."
+                  },
+                  {
+                    link: "/specialized-growth-solutions/executive-branding",
+                    icon: "/Specialized Growth Solutions Icons/Executive Personal Branding & LinkedIn Marketing.png",
+                    title: "Executive Personal Branding & LinkedIn Marketing",
+                    desc: "Elevate presence, grow influence."
+                  }
+                ].map((item, index) => (
+                  <Button 
+                    key={index}
+                    variant="outline" 
+                    className="flex items-start gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors min-h-[80px]"
+                    asChild
+                  >
+                    <Link to={item.link} className="flex items-start gap-4 w-full">
+                      <img 
+                        src={item.icon} 
+                        alt={item.title} 
+                        className="w-8 h-8 mt-1 flex-shrink-0 dark:invert object-contain" 
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h5 className="font-semibold text-sm mb-1 line-clamp-2">{item.title}</h5>
+                        <p className="text-xs opacity-80 line-clamp-2">{item.desc}</p>
+                      </div>
+                    </Link>
+                  </Button>
+                ))}
               </div>
 
               <div className="text-center">
@@ -342,93 +262,71 @@ export default function TimelineSection() {
 
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Core Strategic Solutions</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/strategic-solutions/process-automation">
-                    <Cog className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold">Process & Workflow Automation</h5>
-                      <p className="text-sm opacity-80">Automate execution. Eliminate friction.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/strategic-solutions/digital-systems-enablement">
-                    <Database className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold">Digital Systems Enablement</h5>
-                      <p className="text-sm opacity-80">Optimize platforms. Empower teams.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/strategic-solutions/custom-solution-engineering">
-                    <Wrench className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold">Custom Solution Engineering</h5>
-                      <p className="text-sm opacity-80">Solve complex. Deliver fast.</p>
-                    </div>
-                  </Link>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="flex items-start gap-3 p-6 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
-                  asChild
-                >
-                  <Link to="/strategic-solutions/enterprise-evolution-strategic-transformation">
-                    <Briefcase className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold">Enterprise Evolution & Strategic Transformation</h5>
-                      <p className="text-sm opacity-80">Reshape. Scale. Future-proof.</p>
-                    </div>
-                  </Link>
-                </Button>
+                {[
+                  {
+                    link: "/strategic-solutions/process-automation",
+                    icon: "/Strategic Solutions Icons/Process & Workflow Automation.png",
+                    title: "Process & Workflow Automation",
+                    desc: "Automate execution. Eliminate friction."
+                  },
+                  {
+                    link: "/strategic-solutions/digital-systems-enablement",
+                    icon: "/Strategic Solutions Icons/Digital Systems Enablement.png",
+                    title: "Digital Systems Enablement",
+                    desc: "Optimize platforms. Empower teams."
+                  },
+                  {
+                    link: "/strategic-solutions/custom-solution-engineering",
+                    icon: "/Strategic Solutions Icons/Custom Solution Engineering.png",
+                    title: "Custom Solution Engineering",
+                    desc: "Solve complex. Deliver fast."
+                  },
+                  {
+                    link: "/strategic-solutions/enterprise-evolution-strategic-transformation",
+                    icon: "/Strategic Solutions Icons/Enterprise Evolution & Strategic Transformation.png",
+                    title: "Enterprise Evolution & Strategic Transformation",
+                    desc: "Reshape. Scale. Future-proof."
+                  }
+                ].map((item, index) => (
+                  <Button 
+                    key={index}
+                    variant="outline" 
+                    className="flex items-start gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors min-h-[80px]"
+                    asChild
+                  >
+                    <Link to={item.link} className="flex items-start gap-4 w-full">
+                      <img 
+                        src={item.icon} 
+                        alt={item.title} 
+                        className="w-8 h-8 mt-1 flex-shrink-0 dark:invert object-contain" 
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h5 className="font-semibold text-sm mb-1 line-clamp-2">{item.title}</h5>
+                        <p className="text-xs opacity-80 line-clamp-2">{item.desc}</p>
+                      </div>
+                    </Link>
+                  </Button>
+                ))}
               </div>
 
               <h4 className="text-lg sm:text-xl font-semibold mb-4">Solutions By Function</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <DollarSign className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Finance</h5>
-                    <p className="text-sm text-muted-foreground">Automate reporting. Accelerate reconciliation.</p>
+                {[
+                  { title: "Finance", desc: "Automate reporting. Accelerate reconciliation." },
+                  { title: "Operations", desc: "Unblock execution. Speed up critical workflows." },
+                  { title: "Compliance & Governance", desc: "Reduce risk. Ensure audit-ready control." },
+                  { title: "Cross-Functional Leadership", desc: "Align departments. Orchestrate complex delivery." }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-card min-h-[80px]">
+                    <div className="w-8 h-8 mt-1 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-4 h-4 bg-primary rounded-sm"></div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h5 className="font-semibold text-foreground text-sm mb-1">{item.title}</h5>
+                      <p className="text-xs text-muted-foreground line-clamp-2">{item.desc}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Activity className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Operations</h5>
-                    <p className="text-sm text-muted-foreground">Unblock execution. Speed up critical workflows.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Shield className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Compliance & Governance</h5>
-                    <p className="text-sm text-muted-foreground">Reduce risk. Ensure audit-ready control.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                  <Network className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-                  <div>
-                    <h5 className="font-semibold text-foreground">Cross-Functional Leadership</h5>
-                    <p className="text-sm text-muted-foreground">Align departments. Orchestrate complex delivery.</p>
-                  </div>
-                </div>
+                ))}
               </div>
 
               <div className="text-center">

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap } from 'lucide-react';
@@ -39,23 +40,25 @@ const Hero: React.FC = () => {
             {' '}to life.
           </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p
+          {/* Subtitle with Fixed Layout */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-base sm:text-lg md:text-xl text-foreground/90 dark:text-foreground/80 mb-12 leading-relaxed"
           >
-            We help businesses grow fast and scale smart.
-            <span className="inline-block align-middle ml-1 px-2 py-0.5 rounded-lg bg-primary/10 dark:bg-primary/20">
-              <RotatingText
-                texts={["The right solution.", "The right time.", "Delivered."]}
-                rotationInterval={2000}
-                mainClassName="inline font-semibold text-black dark:text-white"
-                splitBy="words"
-              />
-            </span>
-          </motion.p>
+            <div className="flex flex-wrap items-center justify-center gap-1">
+              <span>We help businesses grow fast and scale smart.</span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded-lg bg-primary/10 dark:bg-primary/20 min-w-[140px] justify-center">
+                <RotatingText
+                  texts={["The right solution.", "The right time.", "Delivered."]}
+                  rotationInterval={2000}
+                  mainClassName="inline font-semibold text-black dark:text-white"
+                  splitBy="words"
+                />
+              </span>
+            </div>
+          </motion.div>
 
           {/* Interactive Hover Cards */}
           <motion.div
