@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import InteractiveHoverCard from '../ui/interactive-hover-card';
+import { RotatingText } from '../ui/rotating-text';
 
 const Hero: React.FC = () => {
   return (
@@ -45,7 +46,15 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-base sm:text-lg md:text-xl text-foreground/90 dark:text-foreground/80 mb-12 leading-relaxed"
           >
-            We help businesses grow fast and scale smart. The right solution. The right time. Delivered.
+            We help businesses grow fast and scale smart.
+            <span className="inline-block align-middle ml-1 px-2 py-0.5 rounded-lg bg-primary/10 dark:bg-primary/20">
+              <RotatingText
+                texts={["The right solution.", "The right time.", "Delivered."]}
+                rotationInterval={2000}
+                mainClassName="inline font-semibold text-black dark:text-white"
+                splitBy="words"
+              />
+            </span>
           </motion.p>
 
           {/* Interactive Hover Cards */}

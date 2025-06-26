@@ -1,9 +1,9 @@
+
 "use client"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
 import {
   BarChart3,
   Settings,
@@ -23,7 +23,7 @@ import {
   Network,
 } from "lucide-react"
 
-export default function OurSolutions() {
+export default function TimelineSection() {
   const [activeSection, setActiveSection] = useState("growth-solutions")
 
   useEffect(() => {
@@ -89,76 +89,32 @@ export default function OurSolutions() {
       {/* Main Content Section */}
       <div className="bg-background text-foreground flex-grow">
         <div className="container py-8 flex flex-col lg:flex-row gap-8">
-          {/* Table of Contents - Shows only active section on mobile with animations */}
-          <nav className="lg:sticky lg:top-24 lg:self-start p-4 lg:w-64 sticky top-16 bg-background/95 backdrop-blur-sm border-b border-border lg:border-none z-40">
-            {/* Mobile: Show only active section with slide animations */}
-            <div className="lg:hidden">
-              <div className="text-center overflow-hidden">
-                {activeSection === "growth-solutions" && (
-                  <motion.span 
-                    className="block text-lg font-bold text-primary"
-                    initial={{ opacity: 0, x: -100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 100 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    key="growth"
-                  >
-                    Growth Solutions
-                  </motion.span>
-                )}
-                {activeSection === "strategic-solutions" && (
-                  <motion.span 
-                    className="block text-lg font-bold text-primary"
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    key="strategic"
-                  >
-                    Strategic Solutions
-                  </motion.span>
-                )}
-              </div>
-            </div>
-            
-            {/* Desktop: Show all sections with animations */}
-            <ul className="hidden lg:flex lg:flex-col lg:space-y-3">
+          {/* Table of Contents - Hidden on mobile, sticky on desktop */}
+          <nav className="hidden lg:block lg:sticky lg:top-24 lg:self-start p-4 lg:w-64">
+            <ul className="space-y-2">
               {sections.map((section) => (
-                <motion.li 
-                  key={section.id}
-                  initial={{ opacity: 0, x: section.id === "growth-solutions" ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                >
+                <li key={section.id}>
                   <button
                     onClick={() => scrollToSection(section.id)}
                     className={cn(
-                      "text-xl transition-colors w-full text-left px-3 py-2",
+                      "text-lg transition-colors pl-4 border-l-4 w-full text-left",
                       activeSection === section.id
-                        ? "font-bold text-primary"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? "font-bold text-primary border-primary"
+                        : "text-muted-foreground hover:text-foreground border-transparent"
                     )}
                   >
                     {section.title}
                   </button>
-                </motion.li>
+                </li>
               ))}
             </ul>
           </nav>
 
           {/* Main Content */}
           <main className="flex-1 max-w-none">
-            {/* Growth Solutions Section - Slides from LEFT to RIGHT */}
-            <motion.section 
-              id="growth-solutions" 
-              className="py-4 mb-12 sm:mb-16"
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight text-center sm:text-left text-primary">Growth Solutions</h2>
+            {/* Growth Solutions Section */}
+            <section id="growth-solutions" className="py-4 mb-12 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-primary">Growth Solutions</h2>
 
               <h3 className="text-xl sm:text-2xl font-semibold mb-4">High-Performance Marketing</h3>
               <p className="mb-6 text-muted-foreground leading-relaxed">
@@ -370,18 +326,11 @@ export default function OurSolutions() {
                   <a href="/contact">Ready to move faster? Let's talk.</a>
                 </Button>
               </div>
-            </motion.section>
+            </section>
 
-            {/* Strategic Solutions Section - Slides from RIGHT to LEFT */}
-            <motion.section 
-              id="strategic-solutions" 
-              className="py-4 mb-12 sm:mb-16"
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight text-center sm:text-left text-primary">Strategic Solutions</h2>
+            {/* Strategic Solutions Section */}
+            <section id="strategic-solutions" className="py-4 mb-12 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-primary">Strategic Solutions</h2>
 
               <p className="mb-6 text-muted-foreground leading-relaxed">
                 You need to improve efficiency, automate intelligently, and ensure operations scale without chaos. If
@@ -487,7 +436,7 @@ export default function OurSolutions() {
                   <a href="/contact">Ready to move faster? Let's talk.</a>
                 </Button>
               </div>
-            </motion.section>
+            </section>
           </main>
         </div>
       </div>

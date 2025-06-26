@@ -72,9 +72,9 @@ const Solutions: React.FC = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <Link to={solution.href} className="block group">
-                <Card className={`h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 custom-shadow ${solution.color} border-0 cursor-pointer`}>
+                <Card>
                   <CardHeader className="pb-4">
-                    <div className={`w-16 h-16 rounded-xl ${solution.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                       <solution.icon className={`w-8 h-8 ${solution.iconColor}`} />
                     </div>
                     <CardTitle className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
@@ -84,11 +84,10 @@ const Solutions: React.FC = () => {
                       {solution.subtitle}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-6">
+                  <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
                       {solution.description}
                     </p>
-                    
                     <div className="space-y-3">
                       <h4 className="font-semibold text-foreground">Key Services:</h4>
                       <ul className="space-y-2">
@@ -105,7 +104,6 @@ const Solutions: React.FC = () => {
                         )}
                       </ul>
                     </div>
-
                     <div className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform duration-300">
                       Explore {solution.title}
                       <ArrowRight className="ml-2 w-4 h-4" />

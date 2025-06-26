@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
@@ -14,6 +13,7 @@ import {
   ArrowLeft,
   ArrowRight 
 } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 const PerformanceMarketing: React.FC = () => {
   const keyDeliverables = [
@@ -145,21 +145,24 @@ const PerformanceMarketing: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="bg-background p-6 rounded-lg shadow-sm border hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <motion.div 
-                    className="text-primary"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {deliverable.icon}
-                  </motion.div>
-                  <h4 className="text-xl font-semibold">{deliverable.title}</h4>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {deliverable.description}
-                </p>
+                <Card>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <motion.div 
+                        className="text-primary"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {deliverable.icon}
+                      </motion.div>
+                      <h4 className="text-xl font-semibold">{deliverable.title}</h4>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {deliverable.description}
+                    </p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>

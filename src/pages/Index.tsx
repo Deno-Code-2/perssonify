@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '@/components/sections/Hero';
 import AboutSection from '@/components/sections/AboutSection';
-import OurSolutions from '@/components/sections/Our Solutions';
+import TimelineSection from '@/components/sections/TimelineSection';
 import ContactSection from '@/components/sections/ContactSection';
 import CookieConsent from '@/components/CookieConsent';
 import SocialMeta from '@/components/SocialMeta';
@@ -11,7 +11,7 @@ const Index: React.FC = () => {
     <div>
       <SocialMeta />
       <Hero />
-      <OurSolutions />
+      <TimelineSection />
       <AboutSection />
       <ContactSection />
       <CookieConsent />

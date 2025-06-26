@@ -124,9 +124,9 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-background border-b border-border transition-all duration-300">
       <div className="container mx-auto px-2 sm:px-4">
-        <div className="flex items-center justify-between h-14 sm:h-16">
+        <div className="flex items-center justify-between h-14 sm:h-16 relative">
           {/* Logo */}
           <button 
             onClick={handleLogoClick}
@@ -166,24 +166,28 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: -10, scale: 0.95 }}
                           transition={{ duration: 0.15, ease: 'easeOut' }}
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background/98 backdrop-blur-sm border border-border rounded-lg shadow-xl overflow-hidden z-50"
+                          className="absolute left-0 bg-background border border-border rounded-lg shadow-lg z-[100]"
                           style={{ 
-                            width: '600px',
-                            maxHeight: '400px'
+                            top: '100%',
+                            marginTop: '16px',
+                            width: '800px',
+                            height: '320px',
+                            // Both dropdowns same position - easy to change individually later
+                            transform: item.name === 'Growth Solutions' ? 'translateX(-60%)' : 'translateX(-80%)'
                           }}
                           onMouseLeave={() => setActiveDropdown(null)}
                         >
-                          <div className="p-4 h-full overflow-y-auto">
-                            {/* Main Section Header */}
+                          <div className="p-4 h-full">
+                            {/* Compact Header */}
                             <Link
                               to={item.href}
-                              className="block mb-3 p-3 rounded-lg hover:bg-muted/50 transition-colors border-b border-border/30"
+                              className="block mb-3 p-2 rounded-lg hover:bg-muted/50 transition-colors border-b border-border/30"
                               onClick={() => setActiveDropdown(null)}
                             >
-                              <h3 className="font-bold text-base text-foreground hover:text-primary transition-colors mb-1">
+                              <h3 className="font-bold text-base text-foreground hover:text-primary transition-colors">
                                 {item.name}
                               </h3>
-                              <p className="text-muted-foreground text-xs">
+                              <p className="text-muted-foreground text-xs mt-1">
                                 {item.name === 'Growth Solutions' 
                                   ? 'High-performance marketing strategy and execution'
                                   : 'Technology-enhanced operational scaling solutions'
@@ -191,24 +195,25 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                               </p>
                             </Link>
                             
-                            {/* Sections Grid */}
-                            <div className="flex gap-4">
+                            {/* Wide Layout - 2 Columns Side by Side - NO SCROLLING */}
+                            <div className="grid grid-cols-2 gap-8 h-[220px]">
                               {item.sections?.map((section) => (
-                                <div key={section.title} className="flex-1 space-y-1">
+                                <div key={section.title} className="space-y-2">
                                   <Link
                                     to={section.href}
-                                    className="block font-bold text-xs text-foreground hover:text-primary transition-colors py-1 border-b border-border/20"
+                                    className="block font-bold text-sm text-foreground hover:text-primary transition-colors py-1 border-b border-border/20 mb-2"
                                     onClick={() => setActiveDropdown(null)}
                                   >
                                     {section.title}
                                   </Link>
-                                  <div className="space-y-0.5">
+                                  <div className="space-y-1">
                                     {section.items?.map((subItem) => (
                                       <Link
                                         key={subItem.name}
                                         to={subItem.href}
-                                        className="block text-xs text-foreground/70 hover:text-primary transition-colors py-0.5 px-1 rounded hover:bg-muted/30"
+                                        className="block text-xs text-foreground/70 hover:text-primary transition-colors py-1 px-2 rounded hover:bg-muted/30"
                                         onClick={() => setActiveDropdown(null)}
+                                        title={subItem.name}
                                       >
                                         {subItem.name}
                                       </Link>
@@ -267,7 +272,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden border-t border-border bg-background/98 backdrop-blur-md max-h-[70vh] overflow-y-auto"
+              className="lg:hidden border-t border-border bg-background max-h-[70vh] overflow-y-auto"
             >
               <div className="py-2 space-y-1">
                 {navigation.map((item) => (
@@ -282,11 +287,13 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                           {item.name}
                         </Link>
                         <button
-                          onClick={() =>
-                            setActiveDropdown(
-                              activeDropdown === `mobile-${item.name}` ? null : `mobile-${item.name}`
-                            )
-                          }
+                          onClick={() => {
+                            if (activeDropdown === `mobile-${item.name}`) {
+                              setActiveDropdown(null);
+                            } else {
+                              setActiveDropdown(`mobile-${item.name}`);
+                            }
+                          }}
                           className="flex items-center justify-between w-full px-4 py-1.5 text-xs font-medium transition-colors hover:text-primary text-foreground/80"
                         >
                           <span>View All {item.name}</span>

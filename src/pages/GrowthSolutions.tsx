@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TrendingUp, Users, Mail, Palette, Target, Search, Globe, ArrowRight, Zap, CheckCircle, Star } from 'lucide-react';
+import { TrendingUp, Users, Mail, Palette, Target, Search, Globe, ArrowRight, Zap, CheckCircle, Star, SquareArrowOutUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { WavyBackground } from '@/components/ui/wavy-background';
@@ -51,7 +50,7 @@ const GrowthSolutions: React.FC = () => {
   return <div className="bg-background text-foreground">
       
       {/* Hero Section */}
-      <WavyBackground className="py-8 md:py-12 mt-16 md:mt-20">
+      <WavyBackground className="py-36 md:py-36 mt-16 md:mt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <motion.div initial={{
           opacity: 0,
@@ -60,12 +59,12 @@ const GrowthSolutions: React.FC = () => {
           opacity: 1,
           y: 0
         }} transition={{
-          duration: 0.8
+          duration: 0.7
         }} className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-6">
+            <h1 className="text-7xl md:text-6xl lg:text-6xl font-bold text-black dark:text-white mb-6">
               Growth Solutions
             </h1>
-            <p className="text-xl md:text-2xl text-black/80 dark:text-white/80 mb-8 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-2xl md:text-3xl text-black/80 dark:text-white/80 mb-8 leading-relaxed max-w-4xl mx-auto">
               High-performance marketing strategy and execution that engineers demand, 
               amplifies brand value, and accelerates customer acquisition.
             </p>
@@ -91,7 +90,7 @@ const GrowthSolutions: React.FC = () => {
         }} transition={{
           duration: 0.8
         }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-primary">
               Our Core Growth Services
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -100,18 +99,19 @@ const GrowthSolutions: React.FC = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coreServices.map((service, index) => <motion.div key={service.title} initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8,
-            delay: index * 0.1
-          }}>
+            {coreServices.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+              >
                 <Link to={service.link}>
-                  <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow group cursor-pointer">
+                  <Card className="h-full group cursor-pointer relative">
+                    <SquareArrowOutUpRight 
+                      className="absolute top-4 right-4 w-6 h-6 text-primary/80 drop-shadow-lg animate-pulse pointer-events-none select-none"
+                      aria-label="More info"
+                    />
                     <CardHeader>
                       <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <service.icon className="w-8 h-8 text-primary" />
@@ -124,10 +124,16 @@ const GrowthSolutions: React.FC = () => {
                       <p className="text-muted-foreground leading-relaxed">
                         {service.description}
                       </p>
+                      <Button asChild className="mt-6 w-full">
+                        <Link to={service.link}>
+                          Learn More
+                        </Link>
+                      </Button>
                     </CardContent>
                   </Card>
                 </Link>
-              </motion.div>)}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -170,7 +176,7 @@ const GrowthSolutions: React.FC = () => {
             duration: 0.8,
             delay: 0.2
           }}>
-              <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+              <Card>
                 <CardHeader>
                   <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Zap className="w-8 h-8 text-primary" />

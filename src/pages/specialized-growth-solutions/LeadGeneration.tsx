@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Users, TrendingUp, CheckCircle, ArrowRight, Funnel, DollarSign, BarChart3 } from 'lucide-react';
@@ -141,7 +140,7 @@ const LeadGeneration: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Card className="h-full bg-gradient-to-br from-card to-card/50 border-0 custom-shadow">
+                <Card>
                   <CardHeader>
                     <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                       <deliverable.icon className="w-8 h-8 text-primary" />
@@ -187,7 +186,7 @@ const LeadGeneration: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Card className="h-full bg-gradient-to-br from-card to-card/50 border-0 custom-shadow">
+                <Card>
                   <CardHeader>
                     <CardTitle className="text-2xl font-bold text-foreground">
                       {tier.name}

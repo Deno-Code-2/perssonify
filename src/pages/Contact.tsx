@@ -37,12 +37,6 @@ export default function ContactSection() {
         }
     ];
 
-    const stats = [
-        { icon: Users, value: "500+", label: "Clients Served" },
-        { icon: Target, value: "95%", label: "Success Rate" },
-        { icon: Star, value: "4.9/5", label: "Client Rating" }
-    ];
-
     return (
         <section className="py-32 bg-gradient-to-br from-background via-background to-muted/30">
             <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -53,30 +47,12 @@ export default function ContactSection() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                         Let's Build Something Amazing Together
                     </h1>
-                    <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    <p className="text-2xl md:text-3xl text-muted-foreground max-w-3xl mx-auto py-10">
                         Ready to transform your business? We're here to help you grow faster and scale smarter.
                     </p>
-                </motion.div>
-
-                {/* Stats */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
-                >
-                    {stats.map((stat, index) => (
-                        <div key={index} className="text-center">
-                            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <stat.icon className="w-8 h-8 text-primary" />
-                            </div>
-                            <div className="text-3xl font-bold text-foreground mb-2">{stat.value}</div>
-                            <div className="text-muted-foreground">{stat.label}</div>
-                        </div>
-                    ))}
                 </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -102,7 +78,7 @@ export default function ContactSection() {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                                 >
-                                    <Card className="p-6 h-full hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br from-card to-card/50">
+                                    <Card>
                                         <div className="flex items-start space-x-4">
                                             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                                                 <info.icon className="w-6 h-6 text-primary" />
@@ -117,34 +93,6 @@ export default function ContactSection() {
                                 </motion.div>
                             ))}
                         </div>
-
-                        {/* World Map */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
-                            className="mt-12"
-                        >
-                            <h3 className="text-2xl font-bold mb-6">Our Global Reach</h3>
-                            <Card className="p-6 border-0 bg-gradient-to-br from-card to-card/50">
-                                <WorldMap 
-                                    dots={[
-                                        {
-                                            start: { lat: 37.7749, lng: -122.4194 }, // San Francisco
-                                            end: { lat: 40.7128, lng: -74.0060 },   // New York
-                                        },
-                                        {
-                                            start: { lat: 51.5074, lng: -0.1278 },  // London
-                                            end: { lat: 37.7749, lng: -122.4194 },  // San Francisco
-                                        },
-                                        {
-                                            start: { lat: 35.6762, lng: 139.6503 }, // Tokyo
-                                            end: { lat: 37.7749, lng: -122.4194 },  // San Francisco
-                                        },
-                                    ]}
-                                />
-                            </Card>
-                        </motion.div>
                     </motion.div>
 
                     {/* Contact Form */}
@@ -164,22 +112,18 @@ export default function ContactSection() {
                             <form className="space-y-6">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div>
-                                        <Label htmlFor="firstName" className="text-sm font-medium">
-                                            First Name *
-                                        </Label>
                                         <Input
                                             id="firstName"
+                                            placeholder="First Name"
                                             type="text"
                                             required
                                             className="mt-2"
                                         />
                                     </div>
                                     <div>
-                                        <Label htmlFor="lastName" className="text-sm font-medium">
-                                            Last Name *
-                                        </Label>
                                         <Input
                                             id="lastName"
+                                            placeholder="Last Name"
                                             type="text"
                                             required
                                             className="mt-2"
@@ -188,11 +132,9 @@ export default function ContactSection() {
                                 </div>
 
                                 <div>
-                                    <Label htmlFor="email" className="text-sm font-medium">
-                                        Work Email *
-                                    </Label>
                                     <Input
                                         id="email"
+                                        placeholder="Work Email"
                                         type="email"
                                         required
                                         className="mt-2"
@@ -200,20 +142,15 @@ export default function ContactSection() {
                                 </div>
 
                                 <div>
-                                    <Label htmlFor="company" className="text-sm font-medium">
-                                        Company Name
-                                    </Label>
                                     <Input
                                         id="company"
+                                        placeholder="Company Name"
                                         type="text"
                                         className="mt-2"
                                     />
                                 </div>
 
                                 <div>
-                                    <Label htmlFor="service" className="text-sm font-medium">
-                                        Service Interest
-                                    </Label>
                                     <Select>
                                         <SelectTrigger className="mt-2">
                                             <SelectValue placeholder="Select a service" />
@@ -228,9 +165,6 @@ export default function ContactSection() {
                                 </div>
 
                                 <div>
-                                    <Label htmlFor="budget" className="text-sm font-medium">
-                                        Monthly Budget Range
-                                    </Label>
                                     <Select>
                                         <SelectTrigger className="mt-2">
                                             <SelectValue placeholder="Select budget range" />
@@ -245,14 +179,11 @@ export default function ContactSection() {
                                 </div>
 
                                 <div>
-                                    <Label htmlFor="message" className="text-sm font-medium">
-                                        Tell us about your goals *
-                                    </Label>
                                     <Textarea
                                         id="message"
+                                        placeholder="Describe your current challenges and what you'd like to achieve..."
                                         rows={4}
                                         required
-                                        placeholder="Describe your current challenges and what you'd like to achieve..."
                                         className="mt-2"
                                     />
                                 </div>

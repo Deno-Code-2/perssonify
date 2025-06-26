@@ -83,7 +83,7 @@ const AboutSection: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="hover:shadow-lg transition-all duration-300 custom-shadow bg-card">
+                <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -148,7 +148,7 @@ const AboutSection: React.FC = () => {
             viewport={{ once: true }}
             className="grid grid-cols-1 gap-6 lg:ml-0 lg:items-end lg:justify-end"
           >
-            <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+            <Card>
               <CardContent className="p-8">
                 <div className="flex items-center justify-center mb-6">
                   <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">

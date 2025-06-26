@@ -112,17 +112,17 @@ const About: React.FC = () => {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section with Wavy Background */}
-      <WavyBackground className="py-16 md:py-16 mt-8 md:mt-16">
+      <WavyBackground className="py-20 md:py-28 mt-8 md:mt-16">
         <div className="container max-w-6xl">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair text-black dark:text-white mb-4 lg:mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-playfair text-black dark:text-white mb-6 lg:mb-8">
               We bring{' '}
               <span className="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent drop-shadow-md text-stroke-themed">Growth</span>{' '}
               and{' '}
               <span className="bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent drop-shadow-md text-stroke-themed">Scale</span>{' '}
               to life
             </h1>
-            <p className="text-lg md:text-xl text-black/80 dark:text-white/80 mb-6 lg:mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-black/80 dark:text-white/80 mb-8 lg:mb-10 leading-relaxed max-w-3xl mx-auto">
               Perssonify was built around one simple idea: The right solution at the right time can change everything. We make the right solutions happen right now.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -288,7 +288,7 @@ const About: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+            <Card>
               <CardHeader>
                 <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <TrendingUp className="w-8 h-8 text-primary" />
@@ -310,7 +310,7 @@ const About: React.FC = () => {
               </CardContent>
             </Card>
 
-            <Card className="h-full bg-gradient-to-br from-accent/10 to-accent/5 border-0 custom-shadow">
+            <Card>
               <CardHeader>
                 <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
                   <Target className="w-8 h-8 text-accent" />
@@ -348,7 +348,7 @@ const About: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {deliverables.map((item, index) => (
-              <Card key={item.title} className="text-center h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+              <Card key={item.title} className="text-center h-full">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <item.icon className="w-8 h-8 text-primary" />
@@ -378,7 +378,7 @@ const About: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={value.title} className="text-center h-full bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow">
+              <Card key={value.title} className="text-center h-full">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <value.icon className="w-8 h-8 text-primary" />
@@ -409,7 +409,7 @@ const About: React.FC = () => {
             {people.map((person) => (
               <Card
                 key={person.id}
-                className="text-center bg-gradient-to-br from-primary/10 to-primary/5 border-0 custom-shadow p-6 h-full"
+                className="text-center p-6 h-full"
               >
                 <Avatar className="mb-4 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 shadow-md border-2 border-primary/30 mx-auto">
                   <AvatarImage src={person.avatar} />
