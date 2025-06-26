@@ -1,6 +1,7 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,6 +15,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -108,6 +110,7 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
       if (event.key === 'Escape') {
         setActiveDropdown(null);
         setIsMenuOpen(false);
+        setActiveMobileDropdown(null);
       }
     };
 
@@ -123,9 +126,13 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
   };
 
+  const handleMobileDropdownToggle = (itemName: string) => {
+    setActiveMobileDropdown(activeMobileDropdown === itemName ? null : itemName);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border transition-all duration-300">
-      <div className="container mx-auto px-2 sm:px-4">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <button 
@@ -237,14 +244,14 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
           </nav>
 
           {/* Right side buttons */}
-          <div className="flex items-center space-x-1 sm:space-x-2">
-            <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="flex items-center space-x-2">
               <Switch
                 checked={isDarkMode}
                 setChecked={toggleDarkMode}
               />
             </div>
-            <Button asChild size="sm" className="h-8 text-xs px-2 hidden sm:inline-flex">
+            <Button asChild size="sm" className="h-8 text-xs px-3 hidden sm:inline-flex">
               <Link to="/contact">Get Started</Link>
             </Button>
             
@@ -269,68 +276,66 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
               transition={{ duration: 0.2 }}
               className="lg:hidden border-t border-border bg-background/98 backdrop-blur-md max-h-[70vh] overflow-y-auto"
             >
-              <div className="py-2 space-y-1">
+              <div className="py-3 space-y-1">
                 {navigation.map((item) => (
                   <div key={item.name}>
                     {item.hasDropdown ? (
-                      <div>
+                      <div className="border-b border-border/30 last:border-b-0">
                         <Link
                           to={item.href}
                           onClick={() => setIsMenuOpen(false)}
-                          className="block px-3 py-2 text-sm font-semibold transition-colors hover:text-primary text-foreground border-b border-border/30"
+                          className="block px-4 py-3 text-base font-semibold transition-colors hover:text-primary text-foreground hover:bg-muted/50"
                         >
                           {item.name}
                         </Link>
                         <button
-                          onClick={() =>
-                            setActiveDropdown(
-                              activeDropdown === `mobile-${item.name}` ? null : `mobile-${item.name}`
-                            )
-                          }
-                          className="flex items-center justify-between w-full px-4 py-1.5 text-xs font-medium transition-colors hover:text-primary text-foreground/80"
+                          onClick={() => handleMobileDropdownToggle(item.name)}
+                          className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground hover:bg-muted/30"
                         >
                           <span>View All {item.name}</span>
-                          <ChevronDown 
-                            className={`w-3 h-3 transition-transform duration-200 ${
-                              activeDropdown === `mobile-${item.name}` ? 'rotate-180' : ''
-                            }`} 
-                          />
+                          {activeMobileDropdown === item.name ? (
+                            <ChevronUp className="w-4 h-4" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4" />
+                          )}
                         </button>
                         
                         <AnimatePresence>
-                          {activeDropdown === `mobile-${item.name}` && (
+                          {activeMobileDropdown === item.name && (
                             <motion.div
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: 'auto' }}
                               exit={{ opacity: 0, height: 0 }}
                               transition={{ duration: 0.2 }}
-                              className="bg-muted/30 max-h-48 overflow-y-auto"
+                              className="bg-muted/20 border-t border-border/30"
                             >
                               {item.sections?.map((section) => (
-                                <div key={section.title} className="px-6 py-2 border-l-2 border-primary/20">
+                                <div key={section.title} className="px-6 py-3">
                                   <Link
                                     to={section.href}
                                     onClick={() => {
                                       setIsMenuOpen(false);
-                                      setActiveDropdown(null);
+                                      setActiveMobileDropdown(null);
                                     }}
-                                    className="block text-xs font-bold text-foreground hover:text-primary transition-colors py-1 mb-1 border-b border-border/20"
+                                    className="block text-sm font-bold text-foreground hover:text-primary transition-colors py-2 mb-2 border-b border-border/20"
                                   >
                                     {section.title}
                                   </Link>
-                                  {section.items?.map((subItem) => (
-                                    <Link
-                                      key={subItem.name}
-                                      to={subItem.href}
-                                      onClick={() => {
-                                        setIsMenuOpen(false);
-                                        setActiveDropdown(null);
-                                      }}
-                                      className="block px-2 py-1 text-xs text-foreground/70 hover:text-primary transition-colors hover:bg-muted/50 rounded"
-                                    >
-                                      {subItem.name}
-                                    </Link>
-                                  ))}
+                                  <div className="space-y-1 pl-2">
+                                    {section.items?.map((subItem) => (
+                                      <Link
+                                        key={subItem.name}
+                                        to={subItem.href}
+                                        onClick={() => {
+                                          setIsMenuOpen(false);
+                                          setActiveMobileDropdown(null);
+                                        }}
+                                        className="block px-3 py-2 text-xs text-foreground/70 hover:text-primary transition-colors hover:bg-muted/50 rounded"
+                                      >
+                                        {subItem.name}
+                                      </Link>
+                                    ))}
+                                  </div>
                                 </div>
                               ))}
                             </motion.div>
@@ -341,14 +346,14 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
                       <Link
                         to={item.href}
                         onClick={() => setIsMenuOpen(false)}
-                        className="block px-3 py-2 text-sm font-medium transition-colors hover:text-primary text-foreground/80"
+                        className="block px-4 py-3 text-base font-medium transition-colors hover:text-primary text-foreground/80 hover:bg-muted/50"
                       >
                         {item.name}
                       </Link>
                     )}
                   </div>
                 ))}
-                <div className="px-3 py-2 border-t border-border/30 mt-2">
+                <div className="px-4 py-3 border-t border-border/30 mt-2">
                   <Button asChild className="w-full text-sm">
                     <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                       Get Started
