@@ -1,14 +1,14 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap } from 'lucide-react';
+import { Zap, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import InteractiveHoverCard from '../ui/interactive-hover-card';
 import { RotatingText } from '../ui/rotating-text';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden pt-14 pb-16">
+    <section className="relative flex items-center justify-center overflow-hidden pt-32 pb-24">
       <div className="container relative z-10">
         <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
           {/* Badge */}
@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
             Growth & Strategic Solutions
           </motion.div>
 
-          {/* Main Headline - Adjusted for single line */}
+          {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-base sm:text-lg md:text-xl text-foreground/90 dark:text-foreground/80 mb-12 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-foreground/90 dark:text-foreground/80 mb-16 leading-relaxed"
           >
             <div className="flex flex-wrap items-center justify-center gap-1">
               <span>We help businesses grow fast and scale smart.</span>
@@ -67,20 +67,32 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex flex-col lg:flex-row gap-6 justify-center items-center w-full mt-8"
           >
-            <Link to="/growth-solutions" className="block w-full max-w-lg">
-              <InteractiveHoverCard
-                imageUrl="/Icons/Growth Solutions.png"
-                heading="Growth Solutions"
-                text="High-performance marketing strategy and execution that amplifies brand value and accelerates customer acquisition."
-              />
+            <Link to="/growth-solutions" className="block w-full max-w-lg relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+              <div className="relative">
+                <InteractiveHoverCard
+                  imageUrl="/Icons/Growth Solutions.png"
+                  heading="Growth Solutions"
+                  text="High-performance marketing strategy and execution that amplifies brand value and accelerates customer acquisition."
+                />
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ArrowUpRight className="w-5 h-5 text-primary" />
+                </div>
+              </div>
             </Link>
             
-            <Link to="/strategic-solutions" className="block w-full max-w-lg">
-              <InteractiveHoverCard
-                imageUrl="/Icons/Strategic Solutions.png"
-                heading="Strategic Solutions"
-                text="Tailored strategy and implementations built for precision, scalability, and operational efficiency."
-              />
+            <Link to="/strategic-solutions" className="block w-full max-w-lg relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+              <div className="relative">
+                <InteractiveHoverCard
+                  imageUrl="/Icons/Strategic Solutions.png"
+                  heading="Strategic Solutions"
+                  text="Tailored strategy and implementations built for precision, scalability, and operational efficiency."
+                />
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ArrowUpRight className="w-5 h-5 text-primary" />
+                </div>
+              </div>
             </Link>
           </motion.div>
         </div>

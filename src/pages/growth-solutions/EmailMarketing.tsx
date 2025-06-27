@@ -2,9 +2,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Mail, Target, Users, BarChart, Zap, Settings } from 'lucide-react';
+import { ArrowRight, Mail, Target, Users, BarChart, Zap, Settings, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import ThemeBreadcrumb from '@/components/ui/theme-breadcrumb';
 
 const EmailMarketing: React.FC = () => {
   const services = [
@@ -36,22 +37,27 @@ const EmailMarketing: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <ThemeBreadcrumb />
 
-      {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="pb-16 bg-gradient-to-br from-primary/10 to-primary/5"
-      >
-        <div className="container mx-auto px-4">
+        {/* Hero Section */}
+        <motion.section 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="py-16"
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center max-w-4xl mx-auto"
           >
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
+              <Mail className="w-4 h-4 mr-2" />
+              Growth Solutions
+            </div>
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
               Email Marketing & Marketing Automation
             </h1>
@@ -71,16 +77,15 @@ const EmailMarketing: React.FC = () => {
               <Button variant="outline" size="lg">
                 <Link to="/growth-solutions">
                   View All Growth Solutions
+                  <ArrowUpRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
             </div>
           </motion.div>
-        </div>
-      </motion.section>
+        </motion.section>
 
-      {/* Key Deliverables Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
+        {/* Key Deliverables Section */}
+        <section className="py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -118,17 +123,15 @@ const EmailMarketing: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Outcome Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
+        {/* Outcome Section */}
+        <section className="py-16 bg-muted/30 rounded-2xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-4xl mx-auto px-8"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Expected Outcome
@@ -143,8 +146,8 @@ const EmailMarketing: React.FC = () => {
               </Link>
             </Button>
           </motion.div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 };

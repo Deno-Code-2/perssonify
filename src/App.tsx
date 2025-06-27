@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index';
@@ -24,6 +25,12 @@ import ProcessAutomation from './pages/strategic-solutions/ProcessAutomation';
 import DigitalSystemsEnablement from './pages/strategic-solutions/DigitalSystemsEnablement';
 import CustomSolutionEngineering from './pages/strategic-solutions/CustomSolutionEngineering';
 import EnterpriseEvolution from './pages/strategic-solutions/EnterpriseEvolution';
+import SolutionsByFunction from './pages/strategic-solutions/SolutionsByFunction';
+import FinanceOperations from './pages/strategic-solutions/FinanceOperations';
+import HumanResources from './pages/strategic-solutions/HumanResources';
+import Operations from './pages/strategic-solutions/Operations';
+import ComplianceGovernance from './pages/strategic-solutions/ComplianceGovernance';
+import CrossFunctionalLeadership from './pages/strategic-solutions/CrossFunctionalLeadership';
 import NotFound from './pages/NotFound';
 import Layout from './components/layout/Layout';
 import ScrollToTop from './components/ScrollToTop';
@@ -83,6 +90,12 @@ function App() {
             <Route path="strategic-solutions/digital-systems-enablement" element={<DigitalSystemsEnablement />} />
             <Route path="strategic-solutions/custom-solution-engineering" element={<CustomSolutionEngineering />} />
             <Route path="strategic-solutions/enterprise-evolution-strategic-transformation" element={<EnterpriseEvolution />} />
+            <Route path="strategic-solutions/solutions-by-function" element={<SolutionsByFunction />} />
+            <Route path="strategic-solutions/finance-operations" element={<FinanceOperations />} />
+            <Route path="strategic-solutions/human-resources" element={<HumanResources />} />
+            <Route path="strategic-solutions/operations" element={<Operations />} />
+            <Route path="strategic-solutions/compliance-governance" element={<ComplianceGovernance />} />
+            <Route path="strategic-solutions/cross-functional-leadership" element={<CrossFunctionalLeadership />} />
             
             <Route path="*" element={<NotFound />} />
           </Route>

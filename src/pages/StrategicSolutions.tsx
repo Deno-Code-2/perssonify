@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Target, Cog, Settings, Database, Shield, ArrowRight, Zap, CheckCircle } from 'lucide-react';
+import { Target, Cog, Settings, Database, Shield, ArrowRight, Zap, CheckCircle, DollarSign, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { WavyBackground } from '@/components/ui/wavy-background';
@@ -35,16 +35,43 @@ const StrategicSolutions: React.FC = () => {
       link: '/strategic-solutions/enterprise-evolution-strategic-transformation'
     },
     {
-      icon: Zap,
+      icon: Users,
+      title: 'Solutions By Function',
+      description: 'Business function focused solutions that meet the needs of specific business units.',
+      link: '/strategic-solutions/solutions-by-function'
+    },
+    {
+      icon: Shield,
       title: 'Cross-Functional Solutions',
       description: 'Bridge gaps between departments with integrated solutions that improve collaboration and efficiency.',
-      link: '/strategic-solutions/cross-functional'
+      link: '/strategic-solutions/cross-functional-leadership'
+    }
+  ];
+
+  const functionSolutions = [
+    {
+      icon: DollarSign,
+      title: 'Finance Operations',
+      description: 'Unlocking efficiency in financial processes through automation, integration, and strategic optimization.',
+      link: '/strategic-solutions/finance-operations'
+    },
+    {
+      icon: Users,
+      title: 'Human Resources',
+      description: 'Streamlining HR processes to reduce friction, improve compliance, and elevate the employee experience.',
+      link: '/strategic-solutions/human-resources'
+    },
+    {
+      icon: Settings,
+      title: 'Operations',
+      description: 'Eliminating delays, inefficiencies, and handoff gaps in operational execution.',
+      link: '/strategic-solutions/operations'
     },
     {
       icon: Shield,
       title: 'Compliance & Governance',
-      description: 'Ensure your operations meet industry standards with robust compliance frameworks and governance structures.',
-      link: '/strategic-solutions/compliance'
+      description: 'Reducing regulatory burden and risk exposure with streamlined, traceable processes.',
+      link: '/strategic-solutions/compliance-governance'
     }
   ];
 
@@ -137,8 +164,56 @@ const StrategicSolutions: React.FC = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Function-Specific Solutions */}
       <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Solutions By Business Function
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Specialized solutions for specific business units where bottlenecks most often emerge
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {functionSolutions.map((solution, index) => (
+              <motion.div
+                key={solution.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+              >
+                <Link to={solution.link}>
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-accent/10 to-accent/5 border-0 custom-shadow group cursor-pointer">
+                    <CardHeader>
+                      <div className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <solution.icon className="w-8 h-8 text-accent" />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-foreground group-hover:text-accent transition-colors">
+                        {solution.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {solution.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -204,7 +279,7 @@ const StrategicSolutions: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
