@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index';
@@ -22,6 +21,9 @@ import SEOWebsiteGrowth from './pages/growth-solutions/SEOWebsiteGrowth';
 import WebsiteSolutions from './pages/growth-solutions/WebsiteSolutions';
 import AnalyticsTracking from './pages/specialized-growth-solutions/AnalyticsTracking';
 import ProcessAutomation from './pages/strategic-solutions/ProcessAutomation';
+import DigitalSystemsEnablement from './pages/strategic-solutions/DigitalSystemsEnablement';
+import CustomSolutionEngineering from './pages/strategic-solutions/CustomSolutionEngineering';
+import EnterpriseEvolution from './pages/strategic-solutions/EnterpriseEvolution';
 import NotFound from './pages/NotFound';
 import Layout from './components/layout/Layout';
 import ScrollToTop from './components/ScrollToTop';
@@ -78,6 +80,9 @@ function App() {
             
             {/* Strategic Solutions Routes */}
             <Route path="strategic-solutions/process-automation" element={<ProcessAutomation />} />
+            <Route path="strategic-solutions/digital-systems-enablement" element={<DigitalSystemsEnablement />} />
+            <Route path="strategic-solutions/custom-solution-engineering" element={<CustomSolutionEngineering />} />
+            <Route path="strategic-solutions/enterprise-evolution-strategic-transformation" element={<EnterpriseEvolution />} />
             
             <Route path="*" element={<NotFound />} />
           </Route>

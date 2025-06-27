@@ -155,18 +155,20 @@ export default function TimelineSection() {
                   <Button 
                     key={index}
                     variant="outline" 
-                    className="flex items-start gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors min-h-[80px]"
+                    className="flex items-center gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
                     asChild
                   >
-                    <Link to={item.link} className="flex items-start gap-4 w-full">
-                      <img 
-                        src={item.icon} 
-                        alt={item.title} 
-                        className="w-8 h-8 mt-1 flex-shrink-0 dark:invert object-contain" 
-                      />
-                      <div className="flex-1 min-w-0">
-                        <h5 className="font-semibold text-sm mb-1 line-clamp-2">{item.title}</h5>
-                        <p className="text-xs opacity-80 line-clamp-2">{item.desc}</p>
+                    <Link to={item.link} className="flex items-center gap-4 w-full">
+                      <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                        <img 
+                          src={item.icon} 
+                          alt={item.title} 
+                          className="w-10 h-10 dark:invert object-contain" 
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0 text-left">
+                        <h5 className="font-semibold text-sm mb-1 leading-tight line-clamp-2">{item.title}</h5>
+                        <p className="text-xs opacity-80 leading-tight line-clamp-2">{item.desc}</p>
                       </div>
                     </Link>
                   </Button>
@@ -223,18 +225,20 @@ export default function TimelineSection() {
                   <Button 
                     key={index}
                     variant="outline" 
-                    className="flex items-start gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors min-h-[80px]"
+                    className="flex items-center gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
                     asChild
                   >
-                    <Link to={item.link} className="flex items-start gap-4 w-full">
-                      <img 
-                        src={item.icon} 
-                        alt={item.title} 
-                        className="w-8 h-8 mt-1 flex-shrink-0 dark:invert object-contain" 
-                      />
-                      <div className="flex-1 min-w-0">
-                        <h5 className="font-semibold text-sm mb-1 line-clamp-2">{item.title}</h5>
-                        <p className="text-xs opacity-80 line-clamp-2">{item.desc}</p>
+                    <Link to={item.link} className="flex items-center gap-4 w-full">
+                      <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                        <img 
+                          src={item.icon} 
+                          alt={item.title} 
+                          className="w-10 h-10 dark:invert object-contain" 
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0 text-left">
+                        <h5 className="font-semibold text-sm mb-1 leading-tight line-clamp-2">{item.title}</h5>
+                        <p className="text-xs opacity-80 leading-tight line-clamp-2">{item.desc}</p>
                       </div>
                     </Link>
                   </Button>
@@ -291,18 +295,20 @@ export default function TimelineSection() {
                   <Button 
                     key={index}
                     variant="outline" 
-                    className="flex items-start gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors min-h-[80px]"
+                    className="flex items-center gap-4 p-4 h-auto text-left justify-start hover:bg-primary hover:text-primary-foreground transition-colors"
                     asChild
                   >
-                    <Link to={item.link} className="flex items-start gap-4 w-full">
-                      <img 
-                        src={item.icon} 
-                        alt={item.title} 
-                        className="w-8 h-8 mt-1 flex-shrink-0 dark:invert object-contain" 
-                      />
-                      <div className="flex-1 min-w-0">
-                        <h5 className="font-semibold text-sm mb-1 line-clamp-2">{item.title}</h5>
-                        <p className="text-xs opacity-80 line-clamp-2">{item.desc}</p>
+                    <Link to={item.link} className="flex items-center gap-4 w-full">
+                      <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                        <img 
+                          src={item.icon} 
+                          alt={item.title} 
+                          className="w-10 h-10 dark:invert object-contain" 
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0 text-left">
+                        <h5 className="font-semibold text-sm mb-1 leading-tight line-clamp-2">{item.title}</h5>
+                        <p className="text-xs opacity-80 leading-tight line-clamp-2">{item.desc}</p>
                       </div>
                     </Link>
                   </Button>
@@ -317,13 +323,13 @@ export default function TimelineSection() {
                   { title: "Compliance & Governance", desc: "Reduce risk. Ensure audit-ready control." },
                   { title: "Cross-Functional Leadership", desc: "Align departments. Orchestrate complex delivery." }
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-4 p-4 rounded-lg border bg-card min-h-[80px]">
-                    <div className="w-8 h-8 mt-1 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <div className="w-4 h-4 bg-primary rounded-sm"></div>
+                  <div key={index} className="flex items-center gap-4 p-4 rounded-lg border bg-card">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6 bg-primary rounded-sm"></div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h5 className="font-semibold text-foreground text-sm mb-1">{item.title}</h5>
-                      <p className="text-xs text-muted-foreground line-clamp-2">{item.desc}</p>
+                    <div className="flex-1 min-w-0 text-left">
+                      <h5 className="font-semibold text-foreground text-sm mb-1 leading-tight">{item.title}</h5>
+                      <p className="text-xs text-muted-foreground leading-tight">{item.desc}</p>
                     </div>
                   </div>
                 ))}

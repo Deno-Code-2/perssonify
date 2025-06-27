@@ -20,19 +20,19 @@ const StrategicSolutions: React.FC = () => {
       icon: Database,
       title: 'Digital Systems Enablement',
       description: 'Integrate and optimize your digital infrastructure to create seamless workflows and better data visibility.',
-      link: '/strategic-solutions/digital-systems'
+      link: '/strategic-solutions/digital-systems-enablement'
     },
     {
       icon: Settings,
       title: 'Custom Solution Engineering',
       description: 'Tailored technology solutions built specifically for your unique business requirements and challenges.',
-      link: '/strategic-solutions/custom-solutions'
+      link: '/strategic-solutions/custom-solution-engineering'
     },
     {
       icon: Target,
       title: 'Enterprise Evolution & Strategic Transformation',
       description: 'Guide your organization through strategic changes with comprehensive transformation planning and execution.',
-      link: '/strategic-solutions/enterprise-evolution'
+      link: '/strategic-solutions/enterprise-evolution-strategic-transformation'
     },
     {
       icon: Zap,
